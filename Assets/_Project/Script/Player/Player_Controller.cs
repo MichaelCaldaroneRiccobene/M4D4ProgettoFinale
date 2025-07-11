@@ -5,21 +5,25 @@ using UnityEngine.Events;
 
 public class Player_Controller : MonoBehaviour
 {
-
     [SerializeField] Transform playerCamera;
     public UnityEvent<float, float> onDirectionChange;
     public Vector3 Direction {  get; private set; }
+    public Vector3 PosLastCheckPoint { get; set; }
+    private Vector3 startPos;
     private float x;
     private float z;
     private bool isFocusMode;
 
     private Player_Movement player_Movement;
     private Ground_Check ground_Check;
+    private Rigidbody rb;
 
     private void Start()
     {
         player_Movement = GetComponent<Player_Movement>();
+        rb = GetComponent<Rigidbody>();
         ground_Check = GetComponentInChildren<Ground_Check>();
+        PosLastCheckPoint = transform.position;
     }
 
     private void Update()
@@ -58,5 +62,12 @@ public class Player_Controller : MonoBehaviour
             transform.forward = Vector3.Slerp(transform.forward, lookDirection, 5 * Time.fixedDeltaTime);
         }
         else { if (Direction.sqrMagnitude > 0.1f) transform.forward = Vector3.Slerp(transform.forward, Direction, 5 * Time.fixedDeltaTime); }
+    }
+
+    public void GoToCheckPoint()
+    {
+        rb.velocity = Vector3.zero;
+        transform.position = PosLastCheckPoint;
+        transform.rotation = Quaternion.Euler(0,90, 0);
     }
 }

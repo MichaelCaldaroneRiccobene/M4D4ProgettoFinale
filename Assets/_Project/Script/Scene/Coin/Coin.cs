@@ -9,6 +9,7 @@ public class Coin : MonoBehaviour
     [SerializeField] protected float minSpeed = 0.5f;
     [SerializeField] protected float maxSpeed = 3;
 
+    public Game_Manager game_Manager;
     private void FixedUpdate()
     {
         transform.Rotate(0, speed, 0);
@@ -18,9 +19,15 @@ public class Coin : MonoBehaviour
     {
         DestroyCoin();
     }
+    private void AddCoin()
+    {
+        game_Manager.TakeACoin();
+    }
 
     private void DestroyCoin()
     {
+        AddCoin();
         Destroy(gameObject);
     }
+
 }

@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera_Player : MonoBehaviour
+public class Camera_Controller : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] Vector3 offSetTPS;
 
     [SerializeField] float sensitivity = 5;
-    [SerializeField] float minYaw = -10;
-    [SerializeField] float maxYaw = 80;
+    [SerializeField] float minPitch = -10;
+    [SerializeField] float maxPitch = 80;
 
     private float mouseInputX;
     private float mouseInputY;
-    private float mouseY;
-    private float mouseX;
+    private float pitch;
+    private float yaw;
 
     private void Start()
     {
@@ -31,10 +31,10 @@ public class Camera_Player : MonoBehaviour
 
     private void CameraMovement()
     {
-        mouseY -= mouseInputY * sensitivity; mouseX += mouseInputX * sensitivity;
-        mouseY = Mathf.Clamp(mouseY, minYaw, maxYaw);
+        pitch -= mouseInputY * sensitivity; yaw += mouseInputX * sensitivity;
+        pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
-        Quaternion camRotation = Quaternion.Euler(mouseY, mouseX, 0);
+        Quaternion camRotation = Quaternion.Euler(pitch, yaw, 0);
 
         transform.position = target.position + camRotation * offSetTPS;
         transform.LookAt(target.position + Vector3.up * 2);
