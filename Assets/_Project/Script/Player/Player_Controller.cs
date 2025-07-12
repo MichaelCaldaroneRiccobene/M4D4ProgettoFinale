@@ -5,11 +5,11 @@ using UnityEngine.Events;
 
 public class Player_Controller : MonoBehaviour
 {
-    [SerializeField] Transform playerCamera;
-    public UnityEvent<float, float> onDirectionChange;
+    [SerializeField] private float speedSpawnCheckPoint = 1.0f;
+    [SerializeField] private GameObject refPlayer;
+    private  Camera playerCamera;
     public Vector3 Direction {  get; private set; }
     public Vector3 PosLastCheckPoint { get; set; }
-    private Vector3 startPos;
     private float x;
     private float z;
     private bool isFocusMode;
@@ -24,6 +24,7 @@ public class Player_Controller : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         ground_Check = GetComponentInChildren<Ground_Check>();
         PosLastCheckPoint = transform.position;
+        playerCamera = Camera.main;
     }
 
     private void Update()
@@ -48,7 +49,7 @@ public class Player_Controller : MonoBehaviour
 
     private void Movement()
     {
-        Vector3 forward = playerCamera.forward; Vector3 right = playerCamera.right;
+        Vector3 forward = playerCamera.transform.forward; Vector3 right = playerCamera.transform.right;
         forward.y = 0; right.y = 0;
 
         Direction = forward * z + right * x;
@@ -64,10 +65,45 @@ public class Player_Controller : MonoBehaviour
         else { if (Direction.sqrMagnitude > 0.1f) transform.forward = Vector3.Slerp(transform.forward, Direction, 5 * Time.fixedDeltaTime); }
     }
 
-    public void GoToCheckPoint()
+    public void CheckPoint()
     {
+        StartCoroutine(GoToCheckPoint());
+    }
+
+    private IEnumerator GoToCheckPoint()
+    {
+        rb.isKinematic = true;
+        refPlayer.gameObject.SetActive(false);
+        Vector3 startLocation = transform.position;
+        Vector3 endLocation = PosLastCheckPoint;
+
+        Vector3 midLocation = Vector3.Lerp(startLocation, endLocation,0.5f);
+        Vector3 mid = new Vector3(midLocation.x, startLocation.y + 20, midLocation.z);
+
+        float progression = 0;
+        while (progression < 1)
+        {
+            progression += Time.deltaTime * speedSpawnCheckPoint;
+            float smooth = Mathf.SmoothStep(0, 1, progression);
+            Vector3 interpolate = Vector3.Lerp(startLocation, mid, smooth);
+
+            transform.position = interpolate;
+            yield return null;
+        }
+
+        progression = 0;
+        while (progression < 1)
+        {
+            progression += Time.deltaTime * speedSpawnCheckPoint;
+            float smooth = Mathf.SmoothStep(0, 1, progression);
+            Vector3 interpolate = Vector3.Lerp(mid, endLocation, smooth);
+
+            transform.position = interpolate;
+            yield return null;
+        }
+        rb.isKinematic = false;
         rb.velocity = Vector3.zero;
-        transform.position = PosLastCheckPoint;
-        transform.rotation = Quaternion.Euler(0,90, 0);
+        transform.rotation = Quaternion.Euler(0, 90, 0);
+        refPlayer.gameObject.SetActive(true);
     }
 }

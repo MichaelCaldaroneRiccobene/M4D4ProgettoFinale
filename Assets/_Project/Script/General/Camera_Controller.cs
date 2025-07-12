@@ -15,6 +15,14 @@ public class Camera_Controller : MonoBehaviour
     private float mouseInputY;
     private float pitch;
     private float yaw;
+    private void Awake()
+    {
+        if (target == null)
+        {
+            Player_Controller player = FindObjectOfType<Player_Controller>();
+            target = player.transform;
+        }
+    }
 
     private void Start()
     {

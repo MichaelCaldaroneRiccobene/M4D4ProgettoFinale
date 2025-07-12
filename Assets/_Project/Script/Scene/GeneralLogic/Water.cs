@@ -13,7 +13,7 @@ public class Water : MonoBehaviour
             if (life != null)
             {
                 life.UpdateHp(-50);
-                if(!life.isDead()) player_Controller.GoToCheckPoint();
+                if(!life.isDead()) player_Controller.CheckPoint();
             }
         }
     }
