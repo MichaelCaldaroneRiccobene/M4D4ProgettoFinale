@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Water : MonoBehaviour
 {
+    [SerializeField] private int damageWater = 10;
     private void OnCollisionEnter(Collision collision)
     {
         Player_Controller player_Controller = collision.collider.gameObject.GetComponent<Player_Controller>();
@@ -12,7 +13,7 @@ public class Water : MonoBehaviour
             Life_Controller life = player_Controller.GetComponent<Life_Controller>();
             if (life != null)
             {
-                life.UpdateHp(-50);
+                life.UpdateHp(-damageWater);
                 if(!life.isDead()) player_Controller.CheckPoint();
             }
         }

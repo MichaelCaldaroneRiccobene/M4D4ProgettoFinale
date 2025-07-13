@@ -32,7 +32,7 @@ public class Life_Controller : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(Hp);
+        //Debug.Log(Hp);
     }
 
     private IEnumerator Dying()

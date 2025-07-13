@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    [SerializeField] private float speedAnimation = 0.1f;
-    [SerializeField] private float fireRate = 1;
-    [SerializeField] private Bullet bulletPreFab;
-    [SerializeField] private float speedBullet = 10;
-    [SerializeField] private Transform firePoint;
+    [SerializeField] protected float speedAnimation = 0.1f;
+    [SerializeField] protected float fireRate = 1;
+    [SerializeField] protected int bulletToShoot = 1;
+    [SerializeField] protected float timeForSpawnBullet = 0;
+    [SerializeField] protected Bullet bulletPreFab;
+    [SerializeField] protected float speedBullet = 10;
+    [SerializeField] protected Transform firePoint;
 
+    public Transform ParentWepon {  get; set; }
     public Player_Controller Player_Controller {  get; set; }
-    private float lastTimeShoot;
-    private Vector3 startPos;
-    private Vector3 endPos = new Vector3(0,3,0);
-    private List<Bullet> bulletsPool = new List<Bullet>();
+    protected float lastTimeShoot;
+    protected Vector3 startPos;
+    protected Vector3 endPos = new Vector3(0,3,0);
+    protected List<Bullet> bulletsPool = new List<Bullet>();
+    protected bool isShooting;
 
-    private void Start()
+    public virtual void Start()
     {
         startPos = transform.position;
         endPos += startPos;
@@ -25,26 +29,31 @@ public class Turret : MonoBehaviour
         if(Player_Controller == null ) Player_Controller = FindAnyObjectByType<Player_Controller>();
     }
 
-    private void Update()
+    public virtual void Update()
     {
         TryToShoot();
 
         transform.LookAt(Player_Controller.transform);
     }
 
-    private void TryToShoot()
+    public virtual void TryToShoot()
     {
-        if (Time.time - lastTimeShoot >= fireRate) Shoot();
+        if (!isShooting && Time.time - lastTimeShoot >= fireRate) StartCoroutine(Shoot());
     }
 
-    private void Shoot()
+    public virtual IEnumerator Shoot()
     {
+        isShooting = true;
+        for (int i = 0; i < bulletToShoot; i++)
+        {
+            Bullet b = GetBullet();
+            b.gameObject.SetActive(true); b.transform.position = firePoint.position;
+            b.Dir = Player_Controller.transform.position - transform.position;
+            b.Speed = speedBullet;
+            yield return new WaitForSeconds(timeForSpawnBullet);
+        }
+        isShooting = false; 
         lastTimeShoot = Time.time;
-
-        Bullet b = GetBullet();
-        b.gameObject.SetActive(true); b.transform.position = firePoint.position;
-        b.Dir = Player_Controller.transform.position - transform.position;
-        b.Speed = speedBullet;
     }
 
     IEnumerator AnimationUpDown()
@@ -76,7 +85,7 @@ public class Turret : MonoBehaviour
         StartCoroutine(AnimationUpDown());
     }
 
-    private Bullet GetBullet()
+    public virtual Bullet GetBullet()
     {
         foreach(Bullet b in bulletsPool)
         {
@@ -85,9 +94,12 @@ public class Turret : MonoBehaviour
         return SpawnBullet();
     }
 
-    private Bullet SpawnBullet()
+    public virtual Bullet SpawnBullet()
     {
-        Bullet b = Instantiate(bulletPreFab);
+        Bullet b;
+        if (ParentWepon != null) b = Instantiate(bulletPreFab,ParentWepon);
+        else b = Instantiate(bulletPreFab);
+
         bulletsPool.Add(b);
         b.gameObject.SetActive(false);
         return b;   

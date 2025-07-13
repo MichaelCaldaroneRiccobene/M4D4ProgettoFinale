@@ -15,6 +15,7 @@ public class Camera_Controller : MonoBehaviour
     private float mouseInputY;
     private float pitch;
     private float yaw;
+
     private void Awake()
     {
         if (target == null)
@@ -30,15 +31,12 @@ public class Camera_Controller : MonoBehaviour
         Cursor.visible = false;
     }
 
-    private void Update()
-    {
-        mouseInputX = Input.GetAxis("Mouse X"); mouseInputY = Input.GetAxis("Mouse Y");
-    }
-
     private void LateUpdate() => CameraMovement();
 
     private void CameraMovement()
     {
+        mouseInputX = Input.GetAxis("Mouse X"); mouseInputY = Input.GetAxis("Mouse Y");
+
         pitch -= mouseInputY * sensitivity; yaw += mouseInputX * sensitivity;
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 

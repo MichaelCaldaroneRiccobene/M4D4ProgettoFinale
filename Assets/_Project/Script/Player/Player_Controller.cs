@@ -17,6 +17,7 @@ public class Player_Controller : MonoBehaviour
     private Player_Movement player_Movement;
     private Ground_Check ground_Check;
     private Rigidbody rb;
+    private bool pasue;
 
     private void Start()
     {
@@ -25,6 +26,7 @@ public class Player_Controller : MonoBehaviour
         ground_Check = GetComponentInChildren<Ground_Check>();
         PosLastCheckPoint = transform.position;
         playerCamera = Camera.main;
+        player_Movement.rb = rb;
     }
 
     private void Update()
@@ -32,11 +34,21 @@ public class Player_Controller : MonoBehaviour
         x = Input.GetAxis("Horizontal"); z = Input.GetAxis("Vertical");
 
         Jump();
+
+        if (pasue) Time.timeScale = 0.01f;
+        else Time.timeScale = 1;
     }
 
     private void FixedUpdate()
     {
-        Movement();
+        if(x != 0 || z != 0)
+        {
+            Movement();
+        }
+        else
+        {
+            if (ground_Check.IsOnGround()) player_Movement.DownForce();
+        }
     }
 
     private void Jump()
@@ -45,10 +57,15 @@ public class Player_Controller : MonoBehaviour
 
         if(Input.GetMouseButtonDown(1)) isFocusMode = true;
         if(Input.GetMouseButtonUp(1))   isFocusMode = false;
+        //if (Input.GetMouseButtonUp(0)) pasue = !pasue;
+
+        if (Input.GetKeyDown(KeyCode.LeftShift)) player_Movement.isRunning = true;
+        if (Input.GetKeyUp(KeyCode.LeftShift)) player_Movement.isRunning = false;
     }
 
     private void Movement()
     {
+        if(playerCamera == null) return;
         Vector3 forward = playerCamera.transform.forward; Vector3 right = playerCamera.transform.right;
         forward.y = 0; right.y = 0;
 
