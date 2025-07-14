@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8673070846499658330}
   - component: {fileID: 8545258959301595468}
   - component: {fileID: 3555961740342765159}
-  - component: {fileID: 1191717753407572119}
   m_Layer: 0
   m_Name: Cannone
   m_TagString: Untagged
@@ -84,29 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1191717753407572119
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3813695870630846222}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &4415714576722739168
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,6 +124,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6840843319207131177}
   - component: {fileID: 5632195354471906276}
+  - component: {fileID: 8290987114373034130}
+  - component: {fileID: 152690896059446379}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -187,12 +165,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b93482419c0e54429c1be94f3277d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceToShoot: 10
   speedAnimation: 0.1
   fireRate: 1
+  bulletToShoot: 1
+  damage: 10
+  hitForDeth: 3
+  timeForSpawnBullet: 0
   bulletPreFab: {fileID: 1973084389933061739, guid: b2ad240f0e03537488ecbc59635dc5b3,
     type: 3}
   speedBullet: 10
   firePoint: {fileID: 568283562726121834}
+  Player_Controller: {fileID: 0}
+--- !u!135 &8290987114373034130
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4638856982404910724}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 2, z: 0}
+--- !u!136 &152690896059446379
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4638856982404910724}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.65
+  m_Height: 3
+  m_Direction: 2
+  m_Center: {x: 0, y: 1.6, z: 2}
 --- !u!1 &6762880685209517489
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +315,6 @@ GameObject:
   - component: {fileID: 7284407351594808799}
   - component: {fileID: 8156188571373016164}
   - component: {fileID: 850088998503915611}
-  - component: {fileID: 6547140060472433465}
   m_Layer: 0
   m_Name: Corpo
   m_TagString: Untagged
@@ -360,27 +387,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6547140060472433465
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7055993899670339142}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8017236332696196070
 GameObject:
   m_ObjectHideFlags: 0

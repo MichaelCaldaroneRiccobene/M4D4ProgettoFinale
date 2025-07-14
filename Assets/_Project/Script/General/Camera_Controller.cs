@@ -6,10 +6,10 @@ public class Camera_Controller : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] Vector3 offSetTPS;
-
-    [SerializeField] float sensitivity = 5;
     [SerializeField] float minPitch = -10;
     [SerializeField] float maxPitch = 80;
+
+    public float Sensitivity {  get;  set; }
 
     private float mouseInputX;
     private float mouseInputY;
@@ -37,13 +37,13 @@ public class Camera_Controller : MonoBehaviour
     {
         mouseInputX = Input.GetAxis("Mouse X"); mouseInputY = Input.GetAxis("Mouse Y");
 
-        pitch -= mouseInputY * sensitivity; yaw += mouseInputX * sensitivity;
+        pitch -= mouseInputY * Sensitivity; yaw += mouseInputX * Sensitivity;
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
         Quaternion camRotation = Quaternion.Euler(pitch, yaw, 0);
 
         transform.position = target.position + camRotation * offSetTPS;
-        transform.LookAt(target.position + Vector3.up * 2);
+        transform.LookAt(target.position);
     }
 }
 

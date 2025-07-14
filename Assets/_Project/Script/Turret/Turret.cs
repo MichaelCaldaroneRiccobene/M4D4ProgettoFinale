@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class Turret : MonoBehaviour,I_IDamage
 {
+    [SerializeField] protected float distanceToShoot = 10;
     [SerializeField] protected float speedAnimation = 0.1f;
     [SerializeField] protected float fireRate = 1;
     [SerializeField] protected int bulletToShoot = 1;
+    [SerializeField] protected int damage = 10;
+    [SerializeField] protected int hitForDeth = 3;
     [SerializeField] protected float timeForSpawnBullet = 0;
     [SerializeField] protected Bullet bulletPreFab;
     [SerializeField] protected float speedBullet = 10;
     [SerializeField] protected Transform firePoint;
 
-    public Transform ParentWepon {  get; set; }
-    public Player_Controller Player_Controller {  get; set; }
+    public Transform ParentBulletTurret {  get; set; }
+    public Player_Controller Player_Controller;
     protected float lastTimeShoot;
     protected Vector3 startPos;
     protected Vector3 endPos = new Vector3(0,3,0);
@@ -26,11 +29,12 @@ public class Turret : MonoBehaviour
         endPos += startPos;
         StartCoroutine(AnimationUpDown());
 
-        if(Player_Controller == null ) Player_Controller = FindAnyObjectByType<Player_Controller>();
+        //if(Player_Controller == null ) Player_Controller = FindAnyObjectByType<Player_Controller>();
     }
 
     public virtual void Update()
     {
+        if(Player_Controller == null) return;
         TryToShoot();
 
         transform.LookAt(Player_Controller.transform);
@@ -38,6 +42,10 @@ public class Turret : MonoBehaviour
 
     public virtual void TryToShoot()
     {
+        float distance = Vector3.Distance(transform.position,Player_Controller.transform.position);
+        //Debug.Log(distance);
+        if (distance >= distanceToShoot) return;
+
         if (!isShooting && Time.time - lastTimeShoot >= fireRate) StartCoroutine(Shoot());
     }
 
@@ -97,11 +105,19 @@ public class Turret : MonoBehaviour
     public virtual Bullet SpawnBullet()
     {
         Bullet b;
-        if (ParentWepon != null) b = Instantiate(bulletPreFab,ParentWepon);
+        if (ParentBulletTurret != null) b = Instantiate(bulletPreFab,ParentBulletTurret);
         else b = Instantiate(bulletPreFab);
 
         bulletsPool.Add(b);
+        b.Damage = damage;
         b.gameObject.SetActive(false);
         return b;   
+    }
+
+    public void Damage(int ammount)
+    {
+        hitForDeth--;
+        Debug.Log(hitForDeth);
+        if (hitForDeth <= 0) Destroy(gameObject);
     }
 }

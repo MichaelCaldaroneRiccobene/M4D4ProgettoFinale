@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
 
     public float Speed {  get; set; }
     public Vector3 Dir {  get; set; }
+    public int Damage;
+
     private Rigidbody rb;
     private void Awake()
     {
@@ -34,5 +36,11 @@ public class Bullet : MonoBehaviour
     {
         rb.isKinematic = true;
         gameObject.SetActive(false);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        I_IDamage damage = collision.collider.GetComponent<I_IDamage>();
+        if (damage != null) damage.Damage(-Damage);
     }
 }

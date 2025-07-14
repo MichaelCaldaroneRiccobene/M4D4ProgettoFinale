@@ -24,10 +24,6 @@ public class Player_Movement : MonoBehaviour
 
         if (rb.velocity.magnitude > maxMovementSpeed) rb.velocity = rb.velocity.normalized * maxMovementSpeed;
         else rb.AddForce(direction * movementSpeed, ForceMode.Force);
-
-        
-
-        Debug.Log(rb.velocity.magnitude);
     }
 
     public void DownForce()

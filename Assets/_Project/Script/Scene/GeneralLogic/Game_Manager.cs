@@ -7,6 +7,10 @@ public class Game_Manager : MonoBehaviour
 {
     [SerializeField] private Transform coins;
     [SerializeField] private Transform checkPoint;
+    [SerializeField] private Transform turretsInScene;
+    [SerializeField] private Transform parentBulletTurret;
+
+    [SerializeField] private Player_Controller player_Controller;
 
     public UnityEvent<bool> finishLevel;
     private List<CheckPoint> checkPointList = new List<CheckPoint>();
@@ -19,12 +23,14 @@ public class Game_Manager : MonoBehaviour
     {
         Time.timeScale = 1;
         FindItems();
+        
     }
 
     private void FindItems()
     {
         FindCoins();
         FindCheckPoints();
+        FindAndSetUpTurrets();
     }
 
     private void FindCoins()
@@ -49,7 +55,19 @@ public class Game_Manager : MonoBehaviour
             {
                 checkPointList.Add(point);
                 point.Game_Manager = this;
-                point.ChangeColor(Color.red);
+            }
+        }
+    }
+
+    private void FindAndSetUpTurrets()
+    {
+        for (int i = 0; i < turretsInScene.childCount; i++)
+        {
+            Control_Turrent control_Turrent = turretsInScene.transform.GetChild(i).GetComponent<Control_Turrent>();
+            if (control_Turrent != null)
+            {
+                control_Turrent.player_Controller = player_Controller;
+                if(parentBulletTurret != null) control_Turrent.ParentBulletTurret = parentBulletTurret;
             }
         }
     }

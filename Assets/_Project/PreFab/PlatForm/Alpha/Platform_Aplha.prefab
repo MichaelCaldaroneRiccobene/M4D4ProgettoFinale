@@ -579,7 +579,7 @@ GameObject:
   - component: {fileID: 307163449520784724}
   - component: {fileID: 8051640447489189344}
   - component: {fileID: 4972988170811881141}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SmallWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1054,7 +1054,7 @@ GameObject:
   - component: {fileID: 7890292010647824465}
   - component: {fileID: 9172506990127358602}
   - component: {fileID: 8984413307175445801}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SmallWall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

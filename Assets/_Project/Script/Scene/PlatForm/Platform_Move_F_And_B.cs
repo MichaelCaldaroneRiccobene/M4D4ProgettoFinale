@@ -16,7 +16,7 @@ public class Platform_Move_F_And_B : PlatForm
     private void FixedUpdate()
     {
         float t = Mathf.PingPong(Time.time * speed, 1f);
-        Vector3 pos = Vector3.Lerp(startPos, newPos,t);
+        Vector3 pos = Vector3.Lerp(startPos, newPos + startPos,t);
         transform.position = pos;
     }
 }
