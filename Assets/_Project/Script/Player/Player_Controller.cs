@@ -11,9 +11,9 @@ public class Player_Controller : MonoBehaviour,I_IDamage
     [SerializeField] private Vector3 refCameraFocus;
     [SerializeField] private float sensitivity = 5;
 
-    public Vector3 refCameraStandard;
-    public Vector3 refCameraStandards;
-    public Vector3 refCameraFocuss;
+    [SerializeField] private float maxFov = 50;
+    [SerializeField] private float minFov = 30;
+
 
     private Camera_Controller playerCamera;
     public Vector3 Direction {  get; private set; }
@@ -23,15 +23,17 @@ public class Player_Controller : MonoBehaviour,I_IDamage
     private bool isFocusMode;
 
     private Player_Movement player_Movement;
+    private Player_Animation player_Animation;
     private Player_Shooter player_Shooter;
     private Ground_Check ground_Check;
     private Life_Controller life;
     private Rigidbody rb;
-    private bool pasue;
+    private bool isCheckPointInterpolate;
 
     private void Start()
     {
         player_Movement = GetComponent<Player_Movement>();
+        player_Animation = GetComponentInChildren<Player_Animation>();
         rb = GetComponent<Rigidbody>();
         player_Shooter = GetComponent<Player_Shooter>();
         ground_Check = GetComponentInChildren<Ground_Check>();
@@ -42,10 +44,6 @@ public class Player_Controller : MonoBehaviour,I_IDamage
 
         playerCamera.Sensitivity = sensitivity;
 
-        //refCamera.transform.position = refCameraStandard + transform.position;
-        //refCameraStandards = refCameraStandard;
-        //refCameraFocuss = refCameraFocus;
-
     }
 
     private void Update()
@@ -53,9 +51,6 @@ public class Player_Controller : MonoBehaviour,I_IDamage
         x = Input.GetAxis("Horizontal"); z = Input.GetAxis("Vertical");
 
         InputPlayer();
-
-        if (pasue) Time.timeScale = 0.01f;
-        else Time.timeScale = 1;
     }
 
     private void FixedUpdate()
@@ -65,22 +60,29 @@ public class Player_Controller : MonoBehaviour,I_IDamage
 
     private void InputPlayer()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && ground_Check.IsOnGround()) player_Movement.Jump();
+        if (Input.GetKeyDown(KeyCode.Space) && ground_Check.IsOnGround())
+        {
+            player_Movement.Jump();
+            player_Animation.OnJump();
+        }
+        if (Input.GetKey(KeyCode.Space) && !ground_Check.IsOnGround())
+        {
+            player_Movement.JumpInAir();
+            player_Animation.OnJumpAir();
+        }
 
         if (Input.GetMouseButtonDown(1))
         {
-            //refCameraFocus = refCameraFocuss;
-            //refCamera.transform.position = refCameraFocus + transform.position;
             playerCamera.Sensitivity = sensitivity / 2;
-            Camera.main.fieldOfView = 30;
+            Camera.main.fieldOfView = minFov;
+            //refPlayer.transform.rotation = Quaternion.Euler(0,0,0); 
+            //refPlayer.transform.position = new Vector3(0,0,0);
             isFocusMode = true;
         }
         if (Input.GetMouseButtonUp(1))
         {
-            //refCameraStandard = refCameraStandards;
-            //refCamera.transform.position = refCameraStandard + transform.position;
             playerCamera.Sensitivity = sensitivity;
-            Camera.main.fieldOfView = 80;
+            Camera.main.fieldOfView = maxFov;
             isFocusMode = false;
         }
 
@@ -95,6 +97,7 @@ public class Player_Controller : MonoBehaviour,I_IDamage
     private void Movement()
     {
         if(playerCamera == null) return;
+        if(rb.isKinematic) return;
 
         Vector3 forward = playerCamera.transform.forward; Vector3 right = playerCamera.transform.right;
         forward.y = 0; right.y = 0;
@@ -127,6 +130,7 @@ public class Player_Controller : MonoBehaviour,I_IDamage
     {
         rb.isKinematic = true;
         refPlayer.gameObject.SetActive(false);
+
         Vector3 startLocation = transform.position;
         Vector3 endLocation = PosLastCheckPoint;
 
@@ -157,6 +161,7 @@ public class Player_Controller : MonoBehaviour,I_IDamage
         rb.isKinematic = false;
         rb.velocity = Vector3.zero;
         transform.rotation = Quaternion.Euler(0, 90, 0);
+
         refPlayer.gameObject.SetActive(true);
     }
 

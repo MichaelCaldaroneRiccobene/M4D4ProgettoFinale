@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player_Shooter : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Player_Shooter : MonoBehaviour
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private float speedBullet = 1;
     [SerializeField] private Transform parentBulletPlayer;
+    [SerializeField] private UnityEvent OnAttack;
 
     private float lastTimeShoot;
     private List<Bullet> bulletsPool = new List<Bullet>();
@@ -27,6 +29,7 @@ public class Player_Shooter : MonoBehaviour
         b.gameObject.SetActive(true); b.transform.position = firePoint.position;
         b.Dir = Camera.main.transform.forward + Camera.main.transform.right * 0.05f; // Camera.main.transform.up * 0.1f;//+ Camera.main.transform.right * 0.3f;
         b.Speed = speedBullet;
+        OnAttack?.Invoke();
 
         lastTimeShoot = Time.time;
     }

@@ -61,6 +61,7 @@ public class Game_Manager : MonoBehaviour
 
     private void FindAndSetUpTurrets()
     {
+        if(turretsInScene == null) return;
         for (int i = 0; i < turretsInScene.childCount; i++)
         {
             Control_Turrent control_Turrent = turretsInScene.transform.GetChild(i).GetComponent<Control_Turrent>();

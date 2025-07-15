@@ -4,25 +4,37 @@ using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
-    [SerializeField] private float speed = 10;
-    [SerializeField] private float runSpeed = 30;
-    [SerializeField] private float maxSpeed = 20;
+    [SerializeField] private float speedWalk = 10;
+    [SerializeField] private float maxWalkSpeed = 20;
+
+    [SerializeField] private float speedRun = 30;
+    [SerializeField] private float maxRunSpeed = 30;
+
     [SerializeField] private float jumpForce = 10;
+    [SerializeField] private float jumpForceAir = 10;
     [SerializeField] private float downForce = 10;
 
     public bool isRunning { get; set; }
     public Rigidbody rb {  get; set; }
+    public float MaxMovementSpeed { get; set; }
 
-    private float movementSpeed;
-    private float maxMovementSpeed;
+    public float movementSpeed;
+    public float currentMaxMovementSpeed;
 
 
     public void Movement(Vector3 direction)
     {
-        movementSpeed = isRunning ? runSpeed : speed;
-        maxMovementSpeed = isRunning ? runSpeed : maxSpeed;
+        movementSpeed = isRunning ? speedRun : speedWalk;
+        currentMaxMovementSpeed = isRunning ? maxRunSpeed : maxWalkSpeed;
+        MaxMovementSpeed = currentMaxMovementSpeed;
 
-        if (rb.velocity.magnitude > maxMovementSpeed) rb.velocity = rb.velocity.normalized * maxMovementSpeed;
+        Vector3 velocityRb = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+
+        if (velocityRb.magnitude > currentMaxMovementSpeed)
+        {
+            Vector3 clampVelocity = velocityRb.normalized * currentMaxMovementSpeed;
+            rb.velocity = new Vector3(clampVelocity.x, rb.velocity.y, clampVelocity.z);
+        }
         else rb.AddForce(direction * movementSpeed, ForceMode.Force);
     }
 
@@ -34,5 +46,10 @@ public class Player_Movement : MonoBehaviour
     public void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
+
+    public void JumpInAir()
+    {
+        rb.AddForce(Vector3.up * jumpForceAir, ForceMode.Impulse);
     }
 }
