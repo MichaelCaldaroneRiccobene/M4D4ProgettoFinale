@@ -17,6 +17,7 @@ public class CheckPoint : MonoBehaviour
         if(player_Controller != null )
         {
             player_Controller.PosLastCheckPoint = transform.position;
+            player_Controller.RotLastCheckPoint = transform.rotation;
             Game_Manager.CheckPointPress(this);
         }
     }

@@ -18,6 +18,8 @@ public class Player_Controller : MonoBehaviour,I_IDamage
     private Camera_Controller playerCamera;
     public Vector3 Direction {  get; private set; }
     public Vector3 PosLastCheckPoint { get; set; }
+    public Quaternion RotLastCheckPoint { get; set; }
+
     private float x;
     private float z;
     private bool isFocusMode;
@@ -43,6 +45,7 @@ public class Player_Controller : MonoBehaviour,I_IDamage
         player_Movement.rb = rb;
 
         playerCamera.Sensitivity = sensitivity;
+        RotLastCheckPoint = Quaternion.Euler(0, 90, 0);
 
     }
 
@@ -111,7 +114,10 @@ public class Player_Controller : MonoBehaviour,I_IDamage
         }
         else
         {
-            if (ground_Check.IsOnGround()) player_Movement.DownForce();
+            if (Direction.sqrMagnitude > 0.1f)
+            {
+                if (ground_Check.IsOnGround()) player_Movement.DownForce();
+            }               
         }
 
         if (isFocusMode)
@@ -133,6 +139,7 @@ public class Player_Controller : MonoBehaviour,I_IDamage
 
         Vector3 startLocation = transform.position;
         Vector3 endLocation = PosLastCheckPoint;
+        endLocation.y += 2;
 
         Vector3 midLocation = Vector3.Lerp(startLocation, endLocation,0.5f);
         Vector3 mid = new Vector3(midLocation.x, startLocation.y + 20, midLocation.z);
@@ -160,9 +167,10 @@ public class Player_Controller : MonoBehaviour,I_IDamage
         }
         rb.isKinematic = false;
         rb.velocity = Vector3.zero;
-        transform.rotation = Quaternion.Euler(0, 90, 0);
+        transform.rotation = RotLastCheckPoint;
 
         refPlayer.gameObject.SetActive(true);
+        player_Animation.Recover();
     }
 
     public void Damage(int ammount)

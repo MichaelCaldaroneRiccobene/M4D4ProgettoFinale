@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -8,16 +9,50 @@ public class Cinemat_Camera : MonoBehaviour
     [SerializeField] private float speed = 0.8f;
     [SerializeField] private Vector3[] points;
     [SerializeField] private Camera_Controller camController;
+    [SerializeField] private float timeForGoToMainCamera;
 
     private void Start()
     {
-        StartCoroutine(Camera());
-        Invoke("OffCamera", 0.01f);
+        if(camController == null)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            StartCoroutine(GoToMainCamera());
+            Invoke("OffCamera", 0.01f);
+        }
     }
 
     private void OffCamera()
     {
         camController.gameObject.SetActive(false);
+    }
+
+    private IEnumerator GoToMainCamera()
+    {
+        yield return new WaitForSeconds(timeForGoToMainCamera);
+        Animator anim = GetComponent<Animator>();
+        if (anim != null) anim.enabled = false;
+
+        Vector3 startLoca = transform.position;
+        Vector3 endLoca = camController.transform.position;
+
+        float progre = 0;
+
+        while (progre < 1)
+        {
+            progre += Time.deltaTime * speed;
+            float smooth = Mathf.SmoothStep(0, 1, progre);
+            Vector3 interpolate = Vector3.Lerp(startLoca, endLoca, progre);
+            Quaternion interpolateRot = Quaternion.Lerp(transform.rotation, camController.transform.rotation, progre);
+
+            transform.position = interpolate;
+            transform.rotation = interpolateRot;
+            yield return null;
+        }
+        camController.gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 
     private IEnumerator Camera()

@@ -8,6 +8,7 @@ public class PlatForm : MonoBehaviour
     [SerializeField] protected bool isRandomSpeed;
     [SerializeField] protected float minSpeed = 0.5f;
     [SerializeField] protected float maxSpeed = 3;
+    [SerializeField] protected bool isOnCollision;
 
     private void Start()
     {
@@ -21,11 +22,25 @@ public class PlatForm : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(isOnCollision) return;
         other.transform.SetParent(transform);
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (isOnCollision) return;
         other.transform.SetParent(null);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!isOnCollision) return;
+        collision.collider.transform.SetParent(transform);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (!isOnCollision) return;
+        collision.collider.transform.SetParent(null);
     }
 }

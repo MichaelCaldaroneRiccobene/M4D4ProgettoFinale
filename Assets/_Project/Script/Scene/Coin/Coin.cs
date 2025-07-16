@@ -17,7 +17,8 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        DestroyCoin();
+        Player_Controller player_Controller = other.GetComponent<Player_Controller>();
+        if(player_Controller != null) DestroyCoin();
     }
     private void AddCoin()
     {

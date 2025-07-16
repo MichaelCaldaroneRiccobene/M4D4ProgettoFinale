@@ -6,10 +6,13 @@ public class Platform_Rotation_R_Or_L : PlatForm
 {
     [SerializeField] private bool isX;
     [SerializeField] private bool isY;
+    [SerializeField] private bool isZ;
     private void FixedUpdate()
     {
         if (isX) transform.Rotate(speed * Time.fixedDeltaTime,0, 0);
 
         if (isY) transform.Rotate(0, speed * Time.fixedDeltaTime, 0);
+
+        if (isZ) transform.Rotate(0, 0 , speed * Time.fixedDeltaTime);
     }
 }
