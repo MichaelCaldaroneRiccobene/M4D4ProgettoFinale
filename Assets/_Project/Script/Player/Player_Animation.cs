@@ -96,7 +96,7 @@ public class Player_Animation : MonoBehaviour
 
     private void TryToPlaySoundFoots()
     {
-        bool isMoving = rb.velocity.magnitude > 0.1f;
+        bool isMoving = rb.velocity.magnitude > 0.2f;
 
         if (player_Movement.isRunning) footstepInterval = footstepIntervalRun;
         else footstepInterval = footstepIntervalWalk;

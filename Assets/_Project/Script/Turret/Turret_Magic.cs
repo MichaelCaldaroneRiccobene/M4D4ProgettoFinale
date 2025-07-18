@@ -21,7 +21,7 @@ public class Turret_Magic : Turret
             b.gameObject.SetActive(true); b.transform.position = firePoint.position + randomPos;
             b.Dir = Player_Controller.transform.position - transform.position;
             b.Speed = speedBullet;
-            yield return new WaitForSeconds(timeForSpawnBullet);
+            yield return new WaitForSeconds(timeForNextBulletToShootInSequence);
         }
         isShooting = false;
         lastTimeShoot = Time.time;

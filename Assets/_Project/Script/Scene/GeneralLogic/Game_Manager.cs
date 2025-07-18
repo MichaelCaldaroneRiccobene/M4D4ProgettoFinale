@@ -5,12 +5,15 @@ using UnityEngine.Events;
 
 public class Game_Manager : MonoBehaviour
 {
+    [Header("Take Important Stuff")]
     [SerializeField] private Transform coins;
     [SerializeField] private Transform checkPoint;
+
     [SerializeField] private Transform turretsInScene;
     [SerializeField] private Transform parentBulletTurret;
 
     [SerializeField] private Player_Controller player_Controller;
+
 
     public UnityEvent<bool> finishLevel;
     private List<CheckPoint> checkPointList = new List<CheckPoint>();
@@ -22,8 +25,7 @@ public class Game_Manager : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1;
-        FindItems();
-        
+        FindItems();   
     }
 
     private void FindItems()
@@ -88,7 +90,6 @@ public class Game_Manager : MonoBehaviour
     public void TakeACoin()
     {
         coinTake++;
-
         if(coinTake >= coinToT) isLastCoin();
     }
 }

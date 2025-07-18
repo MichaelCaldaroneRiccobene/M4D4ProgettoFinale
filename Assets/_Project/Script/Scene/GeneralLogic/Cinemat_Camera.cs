@@ -1,51 +1,46 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class Cinemat_Camera : MonoBehaviour
 {
-    [SerializeField] private float speed = 0.8f;
-    [SerializeField] private Vector3[] points;
+    [Header("Setting")]
+    [SerializeField] private float speed = 0.8f; 
     [SerializeField] private Camera_Controller camController;
     [SerializeField] private float timeForGoToMainCamera;
 
+    //[SerializeField] private Vector3[] points; Old
+
     private void Start()
     {
-        if(camController == null)
-        {
-            gameObject.SetActive(false);
-        }
+        if(camController == null) gameObject.SetActive(false);
         else
         {
             StartCoroutine(GoToMainCamera());
-            Invoke("OffCamera", 0.01f);
+            Invoke("OffMainCamera", 0.01f);
         }
     }
 
-    private void OffCamera()
-    {
-        camController.gameObject.SetActive(false);
-    }
+    private void OffMainCamera() => camController.gameObject.SetActive(false);
 
     private IEnumerator GoToMainCamera()
     {
         yield return new WaitForSeconds(timeForGoToMainCamera);
+
         Animator anim = GetComponent<Animator>();
         if (anim != null) anim.enabled = false;
 
-        Vector3 startLoca = transform.position;
-        Vector3 endLoca = camController.transform.position;
+        Vector3 startLocation = transform.position;
+        Vector3 endLocation = camController.transform.position;
 
-        float progre = 0;
+        float progress = 0;
 
-        while (progre < 1)
+        while (progress < 1)
         {
-            progre += Time.deltaTime * speed;
-            float smooth = Mathf.SmoothStep(0, 1, progre);
-            Vector3 interpolate = Vector3.Lerp(startLoca, endLoca, progre);
-            Quaternion interpolateRot = Quaternion.Lerp(transform.rotation, camController.transform.rotation, progre);
+            progress += Time.deltaTime * speed;
+            float smooth = Mathf.SmoothStep(0, 1, progress);
+            Vector3 interpolate = Vector3.Lerp(startLocation, endLocation, progress);
+            Quaternion interpolateRot = Quaternion.Lerp(transform.rotation, camController.transform.rotation, progress);
 
             transform.position = interpolate;
             transform.rotation = interpolateRot;
@@ -55,40 +50,42 @@ public class Cinemat_Camera : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private IEnumerator Camera()
-    {
-        for (int i = 0; i < points.Length; i++)
-        {
-            Vector3 startLocation = transform.position;
-            Vector3 endLocation = points[i];
+    // Vecchio Sistema di Cinematic
 
-            float progression = 0;
-            while (progression < 1)
-            {
-                progression += Time.deltaTime * speed;
-                Vector3 interpolate = Vector3.Lerp(startLocation, endLocation, progression);
+    //private IEnumerator Camera()
+    //{
+    //    for (int i = 0; i < points.Length; i++)
+    //    {
+    //        Vector3 startLocation = transform.position;
+    //        Vector3 endLocation = points[i];
 
-                transform.position = interpolate;
-                yield return null;
-            }
-        }
+    //        float progression = 0;
+    //        while (progression < 1)
+    //        {
+    //            progression += Time.deltaTime * speed;
+    //            Vector3 interpolate = Vector3.Lerp(startLocation, endLocation, progression);
 
-        Vector3 startLoca = transform.position;
-        Vector3 endLoca = camController.transform.position;
+    //            transform.position = interpolate;
+    //            yield return null;
+    //        }
+    //    }
 
-        float progre = 0;
-        while (progre < 1)
-        {
-            progre += Time.deltaTime * speed;
-            float smooth = Mathf.SmoothStep(0, 1, progre);
-            Vector3 interpolate = Vector3.Lerp(startLoca, endLoca, smooth);
-            Quaternion interpolateRot = Quaternion.Lerp(transform.rotation, camController.transform.rotation, smooth);
+    //    Vector3 startLocation = transform.position;
+    //    Vector3 endLocation = camController.transform.position;
 
-            transform.position = interpolate;
-            transform.rotation = interpolateRot;
-            yield return null;
-        }
-        camController.gameObject.SetActive(true);
-        gameObject.SetActive(false);
-    }
+    //    float progress = 0;
+    //    while (progress < 1)
+    //    {
+    //        progress += Time.deltaTime * speed;
+    //        float smooth = Mathf.SmoothStep(0, 1, progress);
+    //        Vector3 interpolate = Vector3.Lerp(startLocation, endLocation, smooth);
+    //        Quaternion interpolateRot = Quaternion.Lerp(transform.rotation, camController.transform.rotation, smooth);
+
+    //        transform.position = interpolate;
+    //        transform.rotation = interpolateRot;
+    //        yield return null;
+    //    }
+    //    camController.gameObject.SetActive(true);
+    //    gameObject.SetActive(false);
+    //}
 }

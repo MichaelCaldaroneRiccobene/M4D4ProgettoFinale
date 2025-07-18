@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class FinishLevel : MonoBehaviour
 {
+    [Header("Setting")]
+    [SerializeField] private string goNextLevel = "Level1";
+
     private bool canFinishLevel;
     private void OnTriggerEnter(Collider other)
     {
@@ -12,9 +15,8 @@ public class FinishLevel : MonoBehaviour
         if (player != null && canFinishLevel)
         {
             Debug.Log("End");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(goNextLevel);
         }
     }
-
     public void FinishLevels(bool heCan) => canFinishLevel = heCan;
 }

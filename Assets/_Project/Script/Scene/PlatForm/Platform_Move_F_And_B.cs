@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Platform_Move_F_And_B : PlatForm
 {
+    [Header("Setting Ping Pong")]
     [SerializeField] Vector3 newPos;
 
     private Vector3 startPos;
@@ -14,12 +15,10 @@ public class Platform_Move_F_And_B : PlatForm
         startPos = transform.position;
     }
 
-    public override void FixedUpdate()
+    public void FixedUpdate()
     {
-        base.FixedUpdate();
-
-        float t = Mathf.PingPong(Time.time * speed, 1f);
-        Vector3 pos = Vector3.Lerp(startPos, newPos,t);
+        float time = Mathf.PingPong(Time.time * speedMoving, 1f);
+        Vector3 pos = Vector3.Lerp(startPos, newPos,time);
         transform.position = pos;
     }
 }

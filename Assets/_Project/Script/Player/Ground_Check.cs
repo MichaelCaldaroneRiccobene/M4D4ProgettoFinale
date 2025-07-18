@@ -17,8 +17,6 @@ public class Ground_Check : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, raySphere);
     }
 
-    //public bool IsOnGround() => Physics.CheckSphere(transform.position, raySphere, layerGround);
-
     public bool IsOnGround()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, raySphere);

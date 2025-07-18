@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Camera_Controller : MonoBehaviour
 {
+    [Header("Setting")]
     [SerializeField] Transform target;
     [SerializeField] Vector3 offSetTPS;
     [SerializeField] float minPitch = -10;
@@ -37,7 +38,8 @@ public class Camera_Controller : MonoBehaviour
     {
         mouseInputX = Input.GetAxis("Mouse X"); mouseInputY = Input.GetAxis("Mouse Y");
 
-        pitch -= mouseInputY * Sensitivity; yaw += mouseInputX * Sensitivity;
+        pitch -= mouseInputY * Sensitivity * Time.deltaTime; 
+        yaw += mouseInputX * Sensitivity * Time.deltaTime;
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
         Quaternion camRotation = Quaternion.Euler(pitch, yaw, 0);

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Life_Controller : MonoBehaviour
 {
+    [Header("Setting")]
     [SerializeField] private int hp = 100;
     [SerializeField] private int maxHp = 100;
 

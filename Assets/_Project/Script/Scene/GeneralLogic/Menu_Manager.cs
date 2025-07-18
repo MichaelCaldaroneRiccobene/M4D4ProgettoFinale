@@ -1,14 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Menu_Manager : MonoBehaviour
 {
+    [Header("Setting Pannels")]
     [SerializeField] private GameObject panneLevel;
     [SerializeField] private GameObject pannelOption;
 
+    [Header("Setting Name Levels")]
     [SerializeField] private string LevelOne = "Level1";
     [SerializeField] private string LevelTwo = "Level2";
 
@@ -44,7 +43,7 @@ public class Menu_Manager : MonoBehaviour
 
     public void QuitGame()
     {
-        //EditorApplication.ExitPlaymode();
+        Debug.Log("Quit Game");
         Application.Quit();
     }
 }

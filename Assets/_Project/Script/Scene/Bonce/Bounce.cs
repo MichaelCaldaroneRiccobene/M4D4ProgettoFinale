@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bounce_Ball : MonoBehaviour
+public class Bounce : MonoBehaviour
 {
+    [Header("Setting")]
     [SerializeField] private float forceImpulce = 10;
     [SerializeField] protected bool isRandomForce;
     [SerializeField] protected float minForce = 0.5f;

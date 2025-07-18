@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player_Controller : MonoBehaviour,I_IDamage,I_Touch_Water
+public class Player_Controller : MonoBehaviour,I_IDamage,I_ITouch_Water
 {
     [SerializeField] private float speedSpawnCheckPoint = 1.0f;
     [SerializeField] private GameObject refPlayer;

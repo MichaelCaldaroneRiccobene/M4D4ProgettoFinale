@@ -4,16 +4,25 @@ using UnityEngine;
 
 public class Generate : MonoBehaviour
 {
+    [Header("General Setting")]
     [SerializeField] private GameObject[] objs;
     [SerializeField] private int xNumber;
     [SerializeField] private int zNumber;
     [SerializeField] private int yNumber;
     [SerializeField] private float space = 1;
-    [SerializeField] private float timeSpawn = 1;
-    [SerializeField] private bool isRandomPos;
+    [SerializeField] private float timeForSpawn = 1;
+
+    [Header("Random Rotation Setting")]
+    [SerializeField] private bool isRandomRotationAll;
+    [SerializeField] private bool isRandomRotationX;
+    [SerializeField] private bool isRandomRotationY;
+    [SerializeField] private bool isRandomRotationZ;
 
     private Vector3 startPos;
     private Vector3 upDatePos;
+
+    private float maxRot = 360;
+    private float minRot = 0;
 
     private void Start()
     {
@@ -30,13 +39,9 @@ public class Generate : MonoBehaviour
             for(int j = 0; j < yNumber; j++)
             {
                 for(float k = 0; k < xNumber; k++)
-                {         
-                    int randomObj = Random.Range(0,objs.Length);
-                    GameObject obj =  Instantiate(objs[randomObj],upDatePos,Quaternion.identity,transform);
-
-                    if (isRandomPos) obj.transform.rotation = Quaternion.Euler(Random.Range(0, 180), Random.Range(0, 180), Random.Range(0, 180));
-                    upDatePos.x += space;
-                    yield return new WaitForSeconds(timeSpawn);
+                {
+                    SpawnObj();
+                    yield return new WaitForSeconds(timeForSpawn);
                 }
                 upDatePos.x = startPos.x;
                 upDatePos.y += space;
@@ -44,5 +49,23 @@ public class Generate : MonoBehaviour
             upDatePos.y = startPos.y;
             upDatePos.z += space;
         }
+    }
+
+    private void SpawnObj()
+    {
+        int randomObj = Random.Range(0, objs.Length);
+        GameObject obj = Instantiate(objs[randomObj], upDatePos, Quaternion.identity, transform);
+
+        ObjRotation(obj);
+        upDatePos.x += space;
+    }
+
+    private void ObjRotation(GameObject obj)
+    {
+        if (isRandomRotationAll) obj.transform.rotation = Quaternion.Euler(Random.Range(minRot, maxRot), Random.Range(minRot, maxRot), Random.Range(minRot, maxRot));
+
+        if (isRandomRotationX) obj.transform.rotation = Quaternion.Euler(Random.Range(minRot, maxRot),transform.rotation.y,transform.rotation.z);
+        if (isRandomRotationY) obj.transform.rotation = Quaternion.Euler(transform.rotation.x, Random.Range(minRot, maxRot), transform.rotation.z);
+        if (isRandomRotationZ) obj.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Random.Range(minRot, maxRot));
     }
 }

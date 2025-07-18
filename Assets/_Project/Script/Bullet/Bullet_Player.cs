@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet_Player : Bullet
 {
+    [Header("Setting Bullet Player")]
     [SerializeField] private float  radius = 15;
     [SerializeField] private float force = 1;
 
@@ -15,32 +16,14 @@ public class Bullet_Player : Bullet
 
         foreach (Collider collider in colliders)
         {
-            Rigidbody rb = collider.GetComponent<Rigidbody>();
-            if(rb != null)
+            Rigidbody targetRb = collider.GetComponent<Rigidbody>();
+            if(targetRb != null)
             {
-                Vector3 posCollider = collider.attachedRigidbody.position - transform.position;
+                Vector3 targetPos = targetRb.position - transform.position;
 
-                rb.AddForce(posCollider * force, ForceMode.Impulse);
+                targetRb.AddForce(targetPos * force, ForceMode.Impulse);
             }
         }
-
-        Debug.DrawRay(transform.position, Vector3.up * 0.1f, Color.yellow, 1f); // punto centrale
-        DrawExplosionDebugSphere(transform.position, radius, 1f);
-
         gameObject.SetActive(false);
     }
-
-    private void DrawExplosionDebugSphere(Vector3 center, float radius, float duration)
-    {
-        int steps = 20;
-        for (int i = 0; i < steps; i++)
-        {
-            float angle = i * Mathf.PI * 2 / steps;
-            Vector3 offset = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
-            Vector3 start = center + offset;
-            Vector3 end = center + Quaternion.Euler(0, 360f / steps, 0) * offset;
-            Debug.DrawLine(start, end, Color.yellow, duration);
-        }
-    }
-
 }
