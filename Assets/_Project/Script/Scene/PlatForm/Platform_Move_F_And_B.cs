@@ -8,15 +8,18 @@ public class Platform_Move_F_And_B : PlatForm
 
     private Vector3 startPos;
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         startPos = transform.position;
     }
 
-    private void FixedUpdate()
+    public override void FixedUpdate()
     {
+        base.FixedUpdate();
+
         float t = Mathf.PingPong(Time.time * speed, 1f);
-        Vector3 pos = Vector3.Lerp(startPos, newPos + startPos,t);
+        Vector3 pos = Vector3.Lerp(startPos, newPos,t);
         transform.position = pos;
     }
 }

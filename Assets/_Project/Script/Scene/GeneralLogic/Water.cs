@@ -7,15 +7,10 @@ public class Water : MonoBehaviour
     [SerializeField] private int damageWater = 10;
     private void OnCollisionEnter(Collision collision)
     {
-        Player_Controller player_Controller = collision.collider.gameObject.GetComponent<Player_Controller>();
-        if(player_Controller != null )
-        {
-            Life_Controller life = player_Controller.GetComponent<Life_Controller>();
-            if (life != null)
-            {
-                life.UpdateHp(-damageWater);
-                if(!life.isDead()) player_Controller.CheckPoint();
-            }
-        }
+        I_IDamage i_IDamage = collision.collider.GetComponent<I_IDamage>();
+        if (i_IDamage != null) i_IDamage.Damage(-damageWater);
+
+        I_Touch_Water i_Touch_Water = collision.collider.gameObject.GetComponent<I_Touch_Water>();
+        if (i_Touch_Water != null) i_Touch_Water.Water();
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6377545808948197634}
   - component: {fileID: 226439764234329443}
   - component: {fileID: 4145068345369710721}
+  - component: {fileID: 1712020769119963126}
   m_Layer: 0
   m_Name: Manico
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.70710576, w: 0.7071079}
   m_LocalPosition: {x: 1.5, y: -1, z: 0}
-  m_LocalScale: {x: 0.25, y: 2, z: 0.25}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6939002364587423008}
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2b4f548f427906c468873dfbb5a93fcb, type: 2}
+  - {fileID: 2100000, guid: 6af20d21fdb3e9846be9fcc5368045e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,6 +108,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &1712020769119963126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5051784185813077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b448533b2617184cab70d202a39c497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageWater: 5
 --- !u!1 &501360926894416733
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,5 +325,7 @@ MonoBehaviour:
   isRandomSpeed: 1
   minSpeed: 20
   maxSpeed: 40
+  isOnCollision: 0
   isX: 0
   isY: 1
+  isZ: 0

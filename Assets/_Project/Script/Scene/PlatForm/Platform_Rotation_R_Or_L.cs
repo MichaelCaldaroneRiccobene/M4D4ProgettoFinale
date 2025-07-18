@@ -7,8 +7,10 @@ public class Platform_Rotation_R_Or_L : PlatForm
     [SerializeField] private bool isX;
     [SerializeField] private bool isY;
     [SerializeField] private bool isZ;
-    private void FixedUpdate()
+    public override void FixedUpdate()
     {
+        base.FixedUpdate();
+
         if (isX) transform.Rotate(speed * Time.fixedDeltaTime,0, 0);
 
         if (isY) transform.Rotate(0, speed * Time.fixedDeltaTime, 0);

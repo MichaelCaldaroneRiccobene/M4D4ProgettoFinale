@@ -30,11 +30,6 @@ public class Life_Controller : MonoBehaviour
 
     public bool isDead() => Hp <= 0;
 
-    private void Update()
-    {
-        //Debug.Log(Hp);
-    }
-
     private IEnumerator Dying()
     {
         Time.timeScale = 0.1f;

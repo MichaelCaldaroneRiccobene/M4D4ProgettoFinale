@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player_Controller : MonoBehaviour,I_IDamage
+public class Player_Controller : MonoBehaviour,I_IDamage,I_Touch_Water
 {
     [SerializeField] private float speedSpawnCheckPoint = 1.0f;
     [SerializeField] private GameObject refPlayer;
@@ -30,7 +30,6 @@ public class Player_Controller : MonoBehaviour,I_IDamage
     private Ground_Check ground_Check;
     private Life_Controller life;
     private Rigidbody rb;
-    private bool isCheckPointInterpolate;
 
     private void Start()
     {
@@ -44,7 +43,7 @@ public class Player_Controller : MonoBehaviour,I_IDamage
         playerCamera = GetComponentInChildren<Camera_Controller>();
         player_Movement.rb = rb;
 
-        playerCamera.Sensitivity = sensitivity;
+        //playerCamera.Sensitivity = sensitivity;
         RotLastCheckPoint = Quaternion.Euler(0, 90, 0);
 
     }
@@ -76,6 +75,7 @@ public class Player_Controller : MonoBehaviour,I_IDamage
 
         if (Input.GetMouseButtonDown(1))
         {
+            if(Camera.main == null) return;
             playerCamera.Sensitivity = sensitivity / 2;
             Camera.main.fieldOfView = minFov;
             //refPlayer.transform.rotation = Quaternion.Euler(0,0,0); 
@@ -84,6 +84,7 @@ public class Player_Controller : MonoBehaviour,I_IDamage
         }
         if (Input.GetMouseButtonUp(1))
         {
+            if (Camera.main == null) return;
             playerCamera.Sensitivity = sensitivity;
             Camera.main.fieldOfView = maxFov;
             isFocusMode = false;
@@ -127,8 +128,10 @@ public class Player_Controller : MonoBehaviour,I_IDamage
         }
         else { if (Direction.sqrMagnitude > 0.1f) transform.forward = Vector3.Slerp(transform.forward, Direction, 5 * Time.fixedDeltaTime);}
     }
-    public void CheckPoint()
+
+    public void Water()
     {
+        if(life.isDead()) return;
         StartCoroutine(GoToCheckPoint());
     }
 

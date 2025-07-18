@@ -8,39 +8,61 @@ public class PlatForm : MonoBehaviour
     [SerializeField] protected bool isRandomSpeed;
     [SerializeField] protected float minSpeed = 0.5f;
     [SerializeField] protected float maxSpeed = 3;
-    [SerializeField] protected bool isOnCollision;
 
-    private void Start()
+    protected Vector3 lastPos;
+    protected Quaternion lastRot;
+    protected HashSet<Rigidbody> objInPlatform = new();
+
+    public virtual void Start()
     {
-        if(isRandomSpeed)
+        if (isRandomSpeed)
         {
             float factor = Random.Range(0, 2) == 0 ? -1 : 1;
             float randomSpeed = Random.Range(minSpeed, maxSpeed) * factor;
             speed = randomSpeed;
         }
+
+        lastPos = transform.position;
+        lastRot = transform.rotation;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public virtual void FixedUpdate()
     {
-        if(isOnCollision) return;
-        other.transform.SetParent(transform);
-    }
+        //Vector3 movement = transform.position - lastPos;
+        //Quaternion deltaRotation = transform.rotation * Quaternion.Inverse(lastRot);
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (isOnCollision) return;
-        other.transform.SetParent(null);
+        //foreach (var rb in objInPlatform)
+        //{
+        //    if (rb != null)
+        //    {
+        //        rb.MovePosition(rb.position + movement);
+        //        rb.MoveRotation(deltaRotation * rb.rotation);
+        //    }
+        //}
+
+        //lastPos = transform.position;
+        //lastRot = transform.rotation;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!isOnCollision) return;
+        //Rigidbody rb = collision.collider.attachedRigidbody;
+        //if (rb != null && !objInPlatform.Contains(rb))
+        //{
+        //    objInPlatform.Add(rb);
+        //}
+
         collision.collider.transform.SetParent(transform);
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (!isOnCollision) return;
+        //Rigidbody rb = collision.collider.attachedRigidbody;
+        //if (rb != null)
+        //{
+        //    objInPlatform.Remove(rb);
+        //}
         collision.collider.transform.SetParent(null);
+
     }
 }
