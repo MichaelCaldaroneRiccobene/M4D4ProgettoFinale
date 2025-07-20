@@ -5,6 +5,10 @@ using UnityEngine.Events;
 
 public class Game_Manager : MonoBehaviour
 {
+    [Header("Level Setting")]
+    [SerializeField] private int timeMinuts = 6;
+    [SerializeField] private float timeSecond = 41;
+
     [Header("Take Important Stuff")]
     [SerializeField] private Transform coins;
     [SerializeField] private Transform checkPoint;
@@ -14,18 +18,49 @@ public class Game_Manager : MonoBehaviour
 
     [SerializeField] private Player_Controller player_Controller;
 
-
     public UnityEvent<bool> finishLevel;
+    public UnityEvent onFinishGame;
+    public UnityEvent onLoseInTime;
+    public UnityEvent<int,float> updateTime;
+    public UnityEvent<int,int> updateCoinText;
+
     private List<CheckPoint> checkPointList = new List<CheckPoint>();
 
     private int coinTake;
     private int coinToT;
 
+    private bool isEndTime;
 
     private void Start()
     {
         Time.timeScale = 1;
-        FindItems();   
+        FindItems();
+        updateCoinText?.Invoke(coinTake, coinToT);
+    }
+
+    private void Update()
+    {
+        Clock();
+    }
+
+    private void Clock()
+    {
+        if(!isEndTime)
+        {
+            timeSecond -= Time.deltaTime;
+            updateTime?.Invoke(timeMinuts, timeSecond);
+            if (timeSecond <= 0)
+            {
+                timeSecond = 60;
+                timeMinuts--;
+                if (timeMinuts <= 0) isEndTime = true;
+            }     
+        }
+        else
+        {
+            updateTime?.Invoke(0, 0);
+            onLoseInTime?.Invoke();
+        }
     }
 
     private void FindItems()
@@ -85,11 +120,13 @@ public class Game_Manager : MonoBehaviour
     {
         Debug.Log("Go To Exit");
         finishLevel?.Invoke(true);
+        onFinishGame?.Invoke();
     }
 
     public void TakeACoin()
     {
         coinTake++;
-        if(coinTake >= coinToT) isLastCoin();
+        updateCoinText?.Invoke(coinTake, coinToT);
+        if (coinTake >= coinToT) isLastCoin();
     }
 }

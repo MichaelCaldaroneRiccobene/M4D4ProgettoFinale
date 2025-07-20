@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4553711634924104887}
   - component: {fileID: 510957298136991291}
   - component: {fileID: 5496138560182485461}
-  - component: {fileID: 2887025925802653601}
+  - component: {fileID: 6264242152526639093}
   m_Layer: 0
   m_Name: RotellaGirella
   m_TagString: Untagged
@@ -130,7 +130,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3076543659198709218, guid: 2ec921c2166db4355a0d0d5ea1385ebe, type: 3}
---- !u!114 &2887025925802653601
+--- !u!114 &6264242152526639093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,16 +139,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2608416423543393634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8df2c794ec0a8a44d8006332da638b00, type: 3}
+  m_Script: {fileID: 11500000, guid: 3bce3ce9df05b514fba3d8ce090b843f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isRandomSpeed: 0
-  minSpeed: 0.5
-  maxSpeed: 3
-  isX: 0
-  isY: 0
-  isZ: 0
 --- !u!1 &9175439763074611004
 GameObject:
   m_ObjectHideFlags: 0

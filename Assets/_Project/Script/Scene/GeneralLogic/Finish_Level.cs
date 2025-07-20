@@ -1,22 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class FinishLevel : MonoBehaviour
 {
     [Header("Setting")]
-    [SerializeField] private string goNextLevel = "Level1";
+    [SerializeField] private Transform bigWall;
+    [SerializeField] private float newHeightWall;
+    [SerializeField] private float speedLerp = 1;
+
+    [SerializeField] private UnityEvent onWin;
 
     private bool canFinishLevel;
     private void OnTriggerEnter(Collider other)
     {
         Player_Controller player = other.GetComponent<Player_Controller>();
-        if (player != null && canFinishLevel)
+        if (player != null && canFinishLevel) onWin?.Invoke();
+    }
+
+    public void FinishMap()
+    {
+        canFinishLevel = true;
+        Vector3 oriPos = bigWall.position;
+        oriPos.y += newHeightWall;
+
+        StartCoroutine(WallUpAnimation(oriPos));
+    }
+
+    private IEnumerator WallUpAnimation(Vector3 newPos)
+    {
+        float progress = 0;
+
+        while (progress < 1)
         {
-            Debug.Log("End");
-            SceneManager.LoadScene(goNextLevel);
+            progress += Time.deltaTime * speedLerp;
+            bigWall.position = Vector3.Lerp(bigWall.position, newPos, progress);
+
+            yield return null;
         }
     }
-    public void FinishLevels(bool heCan) => canFinishLevel = heCan;
 }

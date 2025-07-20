@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8693337735641890229}
   - component: {fileID: 6863494446063683967}
   - component: {fileID: 7450440031141995507}
-  - component: {fileID: 6252158778496603072}
+  - component: {fileID: 7394484096360400995}
   m_Layer: 0
   m_Name: Girone
   m_TagString: Untagged
@@ -107,7 +107,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6751888621147679551, guid: ef18ba4f94ea04eefabf86c07c4b7ab6, type: 3}
---- !u!114 &6252158778496603072
+--- !u!114 &7394484096360400995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,16 +116,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4918207481891629226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8df2c794ec0a8a44d8006332da638b00, type: 3}
+  m_Script: {fileID: 11500000, guid: 3bce3ce9df05b514fba3d8ce090b843f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isRandomSpeed: 1
-  minSpeed: 40
-  maxSpeed: 60
-  isX: 0
-  isY: 1
-  isZ: 0
 --- !u!1 &6311972700865487578
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 88558482129872185}
+  - component: {fileID: 5558511346315609530}
   m_Layer: 0
   m_Name: GironeParent
   m_TagString: Untagged
@@ -158,3 +152,22 @@ Transform:
   - {fileID: 5695693472391098896}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5558511346315609530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6311972700865487578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df2c794ec0a8a44d8006332da638b00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedRotation: 5
+  isRandomSpeedRotation: 1
+  minSpeedRotation: 40
+  maxSpeedRotation: 60
+  rotationInX: 0
+  rotationInY: 1
+  rotationInZ: 0

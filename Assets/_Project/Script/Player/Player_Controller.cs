@@ -14,8 +14,8 @@ public class Player_Controller : MonoBehaviour,I_IDamage,I_ITouch_Water
     [SerializeField] private float maxFov = 50;
     [SerializeField] private float minFov = 30;
 
-
-    private Camera_Controller playerCamera;
+    public UnityEvent goOnMenu;
+    
     public Vector3 Direction {  get; private set; }
     public Vector3 PosLastCheckPoint { get; set; }
     public Quaternion RotLastCheckPoint { get; set; }
@@ -30,6 +30,7 @@ public class Player_Controller : MonoBehaviour,I_IDamage,I_ITouch_Water
     private Ground_Check ground_Check;
     private Life_Controller life;
     private Rigidbody rb;
+    private Camera_Controller playerCamera;
 
     private void Start()
     {
@@ -43,9 +44,8 @@ public class Player_Controller : MonoBehaviour,I_IDamage,I_ITouch_Water
         playerCamera = GetComponentInChildren<Camera_Controller>();
         player_Movement.rb = rb;
 
-        //playerCamera.Sensitivity = sensitivity;
+        playerCamera.Sensitivity = sensitivity;
         RotLastCheckPoint = Quaternion.Euler(0, 90, 0);
-
     }
 
     private void Update()
@@ -62,6 +62,8 @@ public class Player_Controller : MonoBehaviour,I_IDamage,I_ITouch_Water
 
     private void InputPlayer()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) goOnMenu?.Invoke();
+
         if (Input.GetKeyDown(KeyCode.Space) && ground_Check.IsOnGround())
         {
             player_Movement.Jump();
@@ -78,8 +80,6 @@ public class Player_Controller : MonoBehaviour,I_IDamage,I_ITouch_Water
             if(Camera.main == null) return;
             playerCamera.Sensitivity = sensitivity / 2;
             Camera.main.fieldOfView = minFov;
-            //refPlayer.transform.rotation = Quaternion.Euler(0,0,0); 
-            //refPlayer.transform.position = new Vector3(0,0,0);
             isFocusMode = true;
         }
         if (Input.GetMouseButtonUp(1))
@@ -91,8 +91,7 @@ public class Player_Controller : MonoBehaviour,I_IDamage,I_ITouch_Water
         }
 
 
-        if (Input.GetMouseButtonUp(0) && isFocusMode) player_Shooter.TryToShoot();
-        //if (Input.GetMouseButtonUp(0)) pasue = !pasue;
+        if (Input.GetMouseButtonUp(0) && isFocusMode) player_Shooter.TryToShoot();     
 
         if (Input.GetKeyDown(KeyCode.LeftShift)) player_Movement.isRunning = true;
         if (Input.GetKeyUp(KeyCode.LeftShift)) player_Movement.isRunning = false;

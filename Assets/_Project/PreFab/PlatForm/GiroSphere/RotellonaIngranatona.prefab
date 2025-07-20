@@ -49,13 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df2c794ec0a8a44d8006332da638b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isRandomSpeed: 0
-  minSpeed: 0.5
-  maxSpeed: 3
-  isX: 0
-  isY: 1
-  isZ: 0
+  speedRotation: 30
+  isRandomSpeedRotation: 0
+  minSpeedRotation: 0.5
+  maxSpeedRotation: 3
+  rotationInX: 0
+  rotationInY: 1
+  rotationInZ: 0
 --- !u!1 &6176217297354184169
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,13 +105,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df2c794ec0a8a44d8006332da638b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isRandomSpeed: 0
-  minSpeed: 0.5
-  maxSpeed: 3
-  isX: 0
-  isY: 1
-  isZ: 0
+  speedRotation: -30
+  isRandomSpeedRotation: 0
+  minSpeedRotation: 0.5
+  maxSpeedRotation: 3
+  rotationInX: 0
+  rotationInY: 1
+  rotationInZ: 0
 --- !u!1 &7899570622387994946
 GameObject:
   m_ObjectHideFlags: 0
