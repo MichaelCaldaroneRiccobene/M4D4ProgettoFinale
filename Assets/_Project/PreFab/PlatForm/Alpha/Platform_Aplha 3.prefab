@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5348846434214549706}
   - component: {fileID: 7784116925646588027}
   - component: {fileID: 1060932471993652771}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'BiglWall '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 647997550366496108}
   - component: {fileID: 6303011213392409078}
   - component: {fileID: 4376288858948469001}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 1275912105359238899}
   - component: {fileID: 4253407590623131648}
   - component: {fileID: 4184411809603699857}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BiglWall  (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 8932972548774406990}
   - component: {fileID: 5994406953815702319}
   - component: {fileID: 7302076681665268028}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FinishLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -506,7 +506,7 @@ GameObject:
   - component: {fileID: 2330832725582883747}
   - component: {fileID: 4434311205856566052}
   - component: {fileID: 6801443572059068600}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,7 +613,7 @@ GameObject:
   - component: {fileID: 5233666536102824835}
   - component: {fileID: 2263820163802261582}
   - component: {fileID: 2240464657504318670}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SmallWall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -715,7 +715,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3356183265092026401}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,7 +756,7 @@ GameObject:
   - component: {fileID: 8200288354615966333}
   - component: {fileID: 8193814264974757122}
   - component: {fileID: 5780794087913501232}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SmallWall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -861,7 +861,7 @@ GameObject:
   - component: {fileID: 4200611825576066892}
   - component: {fileID: 5216109451630058364}
   - component: {fileID: 2002787897060767377}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -968,7 +968,7 @@ GameObject:
   - component: {fileID: 3906371172838826788}
   - component: {fileID: 5803785041400461992}
   - component: {fileID: 6262482061509356795}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1075,7 +1075,7 @@ GameObject:
   - component: {fileID: 8210019558418072400}
   - component: {fileID: 1764125068100476032}
   - component: {fileID: 1753926294415731893}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1182,7 +1182,7 @@ GameObject:
   - component: {fileID: 8623128079543034737}
   - component: {fileID: 1929136227569076917}
   - component: {fileID: 2638497932555549802}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BiglWall  (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1287,7 +1287,7 @@ GameObject:
   - component: {fileID: 1706991321459040098}
   - component: {fileID: 4844154686742749020}
   - component: {fileID: 4098440264503057221}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1394,7 +1394,7 @@ GameObject:
   - component: {fileID: 5450855818751830730}
   - component: {fileID: 694212819607086478}
   - component: {fileID: 9139004999290402058}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1501,7 +1501,7 @@ GameObject:
   - component: {fileID: 8748486053997173723}
   - component: {fileID: 5194803283166260854}
   - component: {fileID: 3175746685811145106}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1608,7 +1608,7 @@ GameObject:
   - component: {fileID: 9126287525420054636}
   - component: {fileID: 5261742347554491020}
   - component: {fileID: 4885748360891864306}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1715,7 +1715,7 @@ GameObject:
   - component: {fileID: 880625659475566878}
   - component: {fileID: 3590856104725707557}
   - component: {fileID: 7612562388977919827}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1822,7 +1822,7 @@ GameObject:
   - component: {fileID: 7129378135435462484}
   - component: {fileID: 5754997608712216378}
   - component: {fileID: 1263822427377901903}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1929,7 +1929,7 @@ GameObject:
   - component: {fileID: 5518904096526557549}
   - component: {fileID: 4425854237098301013}
   - component: {fileID: 5311354464019860076}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2036,7 +2036,7 @@ GameObject:
   - component: {fileID: 7934779644386747293}
   - component: {fileID: 6054128794194296705}
   - component: {fileID: 8388627891325305156}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2143,7 +2143,7 @@ GameObject:
   - component: {fileID: 2138693449334604945}
   - component: {fileID: 4403169268396594621}
   - component: {fileID: 874330811928989156}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2250,7 +2250,7 @@ GameObject:
   - component: {fileID: 2231601932335466395}
   - component: {fileID: 6597354611723344894}
   - component: {fileID: 8527611884074990108}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2357,7 +2357,7 @@ GameObject:
   - component: {fileID: 3798393044010472617}
   - component: {fileID: 8577281504672790592}
   - component: {fileID: 641938158915942578}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BiglWall  (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2462,7 +2462,7 @@ GameObject:
   - component: {fileID: 4708338417173604687}
   - component: {fileID: 4412967787353300245}
   - component: {fileID: 2325167066671697206}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BiglWall  (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2564,7 +2564,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5148788118616734122}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Platform_Aplha 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2602,7 +2602,7 @@ GameObject:
   - component: {fileID: 7852743774177970866}
   - component: {fileID: 5919680867385278351}
   - component: {fileID: 3208855989927163644}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2709,7 +2709,7 @@ GameObject:
   - component: {fileID: 6044702685886006698}
   - component: {fileID: 7748984657278069998}
   - component: {fileID: 2369556469696291373}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2816,7 +2816,7 @@ GameObject:
   - component: {fileID: 6545220729943031953}
   - component: {fileID: 8424584798048141389}
   - component: {fileID: 8910824276005408539}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2920,7 +2920,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3178869774405868215}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitori
   m_TagString: Untagged
   m_Icon: {fileID: 0}

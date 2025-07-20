@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
         Invoke("Disable", lifeTime);
     }
 
-    public virtual void FixedUpdate() => rb.AddForce(Dir * (Speed * Time.fixedDeltaTime), ForceMode.Force);
+    public virtual void FixedUpdate() => rb.MovePosition(rb.position + Dir * (Speed * Time.fixedDeltaTime));
     public virtual void OnDisable() => CancelInvoke();
 
     public virtual void Disable()

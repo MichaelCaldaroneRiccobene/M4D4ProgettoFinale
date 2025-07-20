@@ -1,182 +1,66 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player_Controller : MonoBehaviour,I_IDamage,I_ITouch_Water
+public class Player_Controller : MonoBehaviour
 {
-    [SerializeField] private float speedSpawnCheckPoint = 1.0f;
-    [SerializeField] private GameObject refPlayer;
-    [SerializeField] private Transform refCamera;
-    [SerializeField] private Vector3 refCameraFocus;
-    [SerializeField] private float sensitivity = 5;
-
-    [SerializeField] private float maxFov = 50;
-    [SerializeField] private float minFov = 30;
-
+    [Header("OnMenu")]
     public UnityEvent goOnMenu;
-    
-    public Vector3 Direction {  get; private set; }
-    public Vector3 PosLastCheckPoint { get; set; }
-    public Quaternion RotLastCheckPoint { get; set; }
 
-    private float x;
-    private float z;
+    [Header("OnMoving")]
+    public UnityEvent<Vector3,float,float> onDirection;
+    public UnityEvent <bool> isOnFocus;
+    public UnityEvent<bool> isRunning;
+
+    [Header("OnJumping")]
+    public UnityEvent onJump;
+    public UnityEvent onJumpAir;
+
+    [Header("OnAttak")]
+    public UnityEvent onShoot;
+
+    private Vector3 direction;
+    private float horizontal;
+    private float vertical;
+
     private bool isFocusMode;
 
-    private Player_Movement player_Movement;
-    private Player_Animation player_Animation;
-    private Player_Shooter player_Shooter;
-    private Ground_Check ground_Check;
-    private Life_Controller life;
-    private Rigidbody rb;
-    private Camera_Controller playerCamera;
+    private void Update() => InputPlayer();
 
-    private void Start()
-    {
-        player_Movement = GetComponent<Player_Movement>();
-        player_Animation = GetComponentInChildren<Player_Animation>();
-        rb = GetComponent<Rigidbody>();
-        player_Shooter = GetComponent<Player_Shooter>();
-        ground_Check = GetComponentInChildren<Ground_Check>();
-        life = GetComponent<Life_Controller>();
-        PosLastCheckPoint = transform.position;
-        playerCamera = GetComponentInChildren<Camera_Controller>();
-        player_Movement.rb = rb;
 
-        playerCamera.Sensitivity = sensitivity;
-        RotLastCheckPoint = Quaternion.Euler(0, 90, 0);
-    }
-
-    private void Update()
-    {
-        x = Input.GetAxis("Horizontal"); z = Input.GetAxis("Vertical");
-
-        InputPlayer();
-    }
-
-    private void FixedUpdate()
-    {
-        Movement();
-    }
+    private void FixedUpdate() => onDirection?.Invoke(direction, horizontal,vertical);
 
     private void InputPlayer()
     {
+        horizontal = Input.GetAxis("Horizontal"); vertical = Input.GetAxis("Vertical");
+
+        //Menu
         if (Input.GetKeyDown(KeyCode.Escape)) goOnMenu?.Invoke();
 
-        if (Input.GetKeyDown(KeyCode.Space) && ground_Check.IsOnGround())
-        {
-            player_Movement.Jump();
-            player_Animation.OnJump();
-        }
-        if (Input.GetKey(KeyCode.Space) && !ground_Check.IsOnGround())
-        {
-            player_Movement.JumpInAir();
-            player_Animation.OnJumpAir();
+        // Jump And JumpAir
+        if (Input.GetKeyDown(KeyCode.Space)) onJump?.Invoke();
+
+        if (Input.GetKey(KeyCode.Space)) onJumpAir?.Invoke();
+        //
+
+        // Camera
+        if (Input.GetMouseButtonDown(1))
+        {   
+            isFocusMode = true;
+            isOnFocus?.Invoke(isFocusMode);
         }
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            if(Camera.main == null) return;
-            playerCamera.Sensitivity = sensitivity / 2;
-            Camera.main.fieldOfView = minFov;
-            isFocusMode = true;
-        }
         if (Input.GetMouseButtonUp(1))
         {
-            if (Camera.main == null) return;
-            playerCamera.Sensitivity = sensitivity;
-            Camera.main.fieldOfView = maxFov;
             isFocusMode = false;
+            isOnFocus?.Invoke(isFocusMode);
         }
+        //
 
+        //Shooting
+        if (Input.GetMouseButtonUp(0)) onShoot?.Invoke();
 
-        if (Input.GetMouseButtonUp(0) && isFocusMode) player_Shooter.TryToShoot();     
-
-        if (Input.GetKeyDown(KeyCode.LeftShift)) player_Movement.isRunning = true;
-        if (Input.GetKeyUp(KeyCode.LeftShift)) player_Movement.isRunning = false;
-    }
-
-    private void Movement()
-    {
-        if(playerCamera == null) return;
-        if(rb.isKinematic) return;
-
-        Vector3 forward = playerCamera.transform.forward; Vector3 right = playerCamera.transform.right;
-        forward.y = 0; right.y = 0;
-
-        if (x != 0 || z != 0)
-        {
-            Direction = forward * z + right * x;
-            Direction.Normalize();
-
-            player_Movement.Movement(Direction);
-        }
-        else
-        {
-            if (Direction.sqrMagnitude > 0.1f)
-            {
-                if (ground_Check.IsOnGround()) player_Movement.DownForce();
-            }               
-        }
-
-        if (isFocusMode)
-        {
-            Vector3 lookDirection = forward;
-            transform.forward = Vector3.Slerp(transform.forward, lookDirection, 5 * Time.fixedDeltaTime);
-        }
-        else { if (Direction.sqrMagnitude > 0.1f) transform.forward = Vector3.Slerp(transform.forward, Direction, 5 * Time.fixedDeltaTime);}
-    }
-
-    public void Water()
-    {
-        if(life.isDead()) return;
-        StartCoroutine(GoToCheckPoint());
-    }
-
-    private IEnumerator GoToCheckPoint()
-    {
-        rb.isKinematic = true;
-        refPlayer.gameObject.SetActive(false);
-
-        Vector3 startLocation = transform.position;
-        Vector3 endLocation = PosLastCheckPoint;
-        endLocation.y += 2;
-
-        Vector3 midLocation = Vector3.Lerp(startLocation, endLocation,0.5f);
-        Vector3 mid = new Vector3(midLocation.x, startLocation.y + 20, midLocation.z);
-
-        float progression = 0;
-        while (progression < 1)
-        {
-            progression += Time.deltaTime * speedSpawnCheckPoint;
-            float smooth = Mathf.SmoothStep(0, 1, progression);
-            Vector3 interpolate = Vector3.Lerp(startLocation, mid, smooth);
-
-            transform.position = interpolate;
-            yield return null;
-        }
-
-        progression = 0;
-        while (progression < 1)
-        {
-            progression += Time.deltaTime * speedSpawnCheckPoint;
-            float smooth = Mathf.SmoothStep(0, 1, progression);
-            Vector3 interpolate = Vector3.Lerp(mid, endLocation, smooth);
-
-            transform.position = interpolate;
-            yield return null;
-        }
-        rb.isKinematic = false;
-        rb.velocity = Vector3.zero;
-        transform.rotation = RotLastCheckPoint;
-
-        refPlayer.gameObject.SetActive(true);
-        player_Animation.Recover();
-    }
-
-    public void Damage(int ammount)
-    {
-        life.UpdateHp(ammount);
+        //Runnig
+        if (Input.GetKeyDown(KeyCode.LeftShift)) isRunning?.Invoke(true);
+        if (Input.GetKeyUp(KeyCode.LeftShift)) isRunning?.Invoke(false);
     }
 }

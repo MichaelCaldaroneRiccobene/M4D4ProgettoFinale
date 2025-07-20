@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5637759418395363181}
   - component: {fileID: 6451654246850669251}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Slot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8813769932163925190}
   - component: {fileID: 4034460041976706825}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Slot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2390322030200689681}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RotellonaIngranatona
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,10 +204,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2608416423543393634, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
         type: 3}
       propertyPath: m_Name
       value: RotellaGirellaParent (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -278,10 +288,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2608416423543393634, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
         type: 3}
       propertyPath: m_Name
       value: RotellaGirellaParent (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -352,10 +372,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2608416423543393634, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
         type: 3}
       propertyPath: m_Name
       value: RotellaGirellaParent (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -426,10 +456,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2608416423543393634, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
         type: 3}
       propertyPath: m_Name
       value: RotellaGirellaParent (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -454,6 +494,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423240245435234393, guid: 7601d39462a023c4da90836a515efd5a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8061711640808825700, guid: 7601d39462a023c4da90836a515efd5a,
         type: 3}
@@ -594,10 +639,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2608416423543393634, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
         type: 3}
       propertyPath: m_Name
       value: RotellaGirellaParent
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -668,10 +723,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2608416423543393634, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
         type: 3}
       propertyPath: m_Name
       value: RotellaGirellaParent (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -742,10 +807,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2608416423543393634, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
         type: 3}
       propertyPath: m_Name
       value: RotellaGirellaParent (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -816,10 +891,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2608416423543393634, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
         type: 3}
       propertyPath: m_Name
       value: RotellaGirellaParent (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -890,10 +975,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2608416423543393634, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
         type: 3}
       propertyPath: m_Name
       value: RotellaGirellaParent (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -964,10 +1059,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2608416423543393634, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
         type: 3}
       propertyPath: m_Name
       value: RotellaGirellaParent
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175439763074611004, guid: 1e8fe704ebaf2dc4db78ffac8c3bc022,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

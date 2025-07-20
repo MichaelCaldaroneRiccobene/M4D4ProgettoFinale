@@ -10,7 +10,14 @@ public class Camera_Controller : MonoBehaviour
     [SerializeField] float minPitch = -10;
     [SerializeField] float maxPitch = 80;
 
-    public float Sensitivity {  get;  set; }
+    [Header("Setting Camera Specifics")]
+    [SerializeField] private float sensitivityNormal = 5;
+    [SerializeField] private float sensitivityFocus = 2.5f;
+    [SerializeField] private float maxFov = 50;
+    [SerializeField] private float minFov = 30;
+
+    private float sensitivity;
+    private bool isOnFocus = false;
 
     private float mouseInputX;
     private float mouseInputY;
@@ -24,6 +31,8 @@ public class Camera_Controller : MonoBehaviour
             Player_Controller player = FindObjectOfType<Player_Controller>();
             target = player.transform;
         }
+
+        SetSensitivity(isOnFocus);
     }
 
     private void Start()
@@ -34,12 +43,28 @@ public class Camera_Controller : MonoBehaviour
 
     private void LateUpdate() => CameraMovement();
 
+    public void SetSensitivity(bool onFocus)
+    {
+        isOnFocus = onFocus;
+
+        if (isOnFocus)
+        {
+            sensitivity = sensitivityFocus;
+            Camera.main.fieldOfView = minFov;
+        }
+        else
+        {
+            sensitivity = sensitivityNormal;
+            Camera.main.fieldOfView = maxFov;
+        }
+    }
+
     private void CameraMovement()
     {
         mouseInputX = Input.GetAxis("Mouse X"); mouseInputY = Input.GetAxis("Mouse Y");
 
-        pitch -= mouseInputY * Sensitivity * Time.deltaTime; 
-        yaw += mouseInputX * Sensitivity * Time.deltaTime;
+        pitch -= mouseInputY * sensitivity * Time.deltaTime; 
+        yaw += mouseInputX * sensitivity * Time.deltaTime;
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
         Quaternion camRotation = Quaternion.Euler(pitch, yaw, 0);

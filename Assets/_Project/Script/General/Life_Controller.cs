@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class Life_Controller : MonoBehaviour
+public class Life_Controller : MonoBehaviour, I_IDamage
 {
     [Header("Setting")]
     [SerializeField] private int hp = 100;
@@ -23,17 +23,13 @@ public class Life_Controller : MonoBehaviour
 
         if(currentHp > Hp)
         {
-            Debug.Log("Damage");
-
             if (isDead()) OnDead();
             onLFChange?.Invoke(Hp,MaxHp);
         }
-        else
-        {
-            Debug.Log("Heal");
-            onLFChange?.Invoke(Hp,MaxHp);
-        }
+        else onLFChange?.Invoke(Hp, MaxHp);
     }
+
+    public void Damage(int ammount) => UpdateHp(ammount);
 
     public bool isDead() => Hp <= 0;
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7061286100757813604}
   - component: {fileID: 978265107451571450}
   - component: {fileID: 3888777373875159049}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Water_Aplha
   m_TagString: Untagged
   m_Icon: {fileID: 0}

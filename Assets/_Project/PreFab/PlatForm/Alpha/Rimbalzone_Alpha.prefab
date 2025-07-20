@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1447290217242090709}
   - component: {fileID: 3298773936617450255}
   - component: {fileID: 6106770617014853555}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Asta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4185653514507844280}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Rimbalzone_Alpha
   m_TagString: Untagged
   m_Icon: {fileID: 0}

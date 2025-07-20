@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8170308139133152653}
   - component: {fileID: 2241957370738527228}
   - component: {fileID: 5434244923043505106}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 2925122837790074287}
   - component: {fileID: 5607262760327410619}
   - component: {fileID: 8618431901882671142}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SmallWall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 7558937143873665112}
   - component: {fileID: 3291119543823829500}
   - component: {fileID: 7432891117767721235}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 8902790243681155333}
   - component: {fileID: 7068404906212030761}
   - component: {fileID: 8682673636118046256}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 9108291808223614211}
   - component: {fileID: 5979968136538088790}
   - component: {fileID: 367241444531438920}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +545,7 @@ GameObject:
   - component: {fileID: 1379420328575609252}
   - component: {fileID: 1200220573160234151}
   - component: {fileID: 2683563498975694146}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -652,7 +652,7 @@ GameObject:
   - component: {fileID: 2092614104750529836}
   - component: {fileID: 1391706965495610386}
   - component: {fileID: 4873520619351868811}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -759,7 +759,7 @@ GameObject:
   - component: {fileID: 1783468495313040339}
   - component: {fileID: 5641328551912783138}
   - component: {fileID: 6334122423007217292}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -866,7 +866,7 @@ GameObject:
   - component: {fileID: 647546175407636570}
   - component: {fileID: 5484633721484184220}
   - component: {fileID: 8718742110864861588}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -970,7 +970,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4465121995440192295}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Platform_Aplha 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1009,7 +1009,7 @@ GameObject:
   - component: {fileID: 1474035018116785789}
   - component: {fileID: 1123822135621067088}
   - component: {fileID: 194860762348102513}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1116,7 +1116,7 @@ GameObject:
   - component: {fileID: 1231891863153221791}
   - component: {fileID: 645160507461673771}
   - component: {fileID: 7163030769218884514}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1223,7 +1223,7 @@ GameObject:
   - component: {fileID: 1897557397133508013}
   - component: {fileID: 4603901792546362676}
   - component: {fileID: 2032615094697224534}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1537,7 +1537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6549492473079826188}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1573,7 +1573,7 @@ GameObject:
   - component: {fileID: 1929843295037427130}
   - component: {fileID: 2172880158707867658}
   - component: {fileID: 3758088467236667247}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1680,7 +1680,7 @@ GameObject:
   - component: {fileID: 607424286176975677}
   - component: {fileID: 120583419787827837}
   - component: {fileID: 5106628735767205842}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1784,7 +1784,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5342607124886618299}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitori
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1836,7 +1836,7 @@ GameObject:
   - component: {fileID: 7648931291778796297}
   - component: {fileID: 6059888921142024969}
   - component: {fileID: 2536370480627935471}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SmallWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1941,7 +1941,7 @@ GameObject:
   - component: {fileID: 2300165856217276242}
   - component: {fileID: 4569808713324561800}
   - component: {fileID: 6394509567845720664}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2048,7 +2048,7 @@ GameObject:
   - component: {fileID: 8008178047662605377}
   - component: {fileID: 2398874380008296385}
   - component: {fileID: 606267064239921454}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2155,7 +2155,7 @@ GameObject:
   - component: {fileID: 8620540020109046022}
   - component: {fileID: 7773942013847060124}
   - component: {fileID: 3092558528449910402}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2262,7 +2262,7 @@ GameObject:
   - component: {fileID: 8584554222985286779}
   - component: {fileID: 5153206659734889348}
   - component: {fileID: 1395734606735202022}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2369,7 +2369,7 @@ GameObject:
   - component: {fileID: 8613501451213772794}
   - component: {fileID: 7314240920101772181}
   - component: {fileID: 8759792438626555712}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Reggitore (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2476,7 +2476,7 @@ GameObject:
   - component: {fileID: 8426039740335594234}
   - component: {fileID: 5838511485550340825}
   - component: {fileID: 2833320791994266853}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

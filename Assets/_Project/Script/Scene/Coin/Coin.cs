@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    public Game_Manager game_Manager {  get; set; }
+    public Game_Manager Game_Manager { get; set; }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,11 +10,10 @@ public class Coin : MonoBehaviour
 
         if(player_Controller != null) DestroyCoin();
     }
-    private void AddCoin() => game_Manager.TakeACoin();
 
     private void DestroyCoin()
     {
-        AddCoin();
+        Game_Manager.OnTakeCoin();
         Destroy(gameObject);
     }
 }

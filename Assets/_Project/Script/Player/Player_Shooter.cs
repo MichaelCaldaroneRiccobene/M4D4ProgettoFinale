@@ -5,29 +5,30 @@ using UnityEngine.Events;
 
 public class Player_Shooter : MonoBehaviour
 {
-    [SerializeField] private Transform firePoint;
-    [SerializeField] private int damage;
+    [Header("Bullet Setting")]
     [SerializeField] private Bullet bullet;
-    [SerializeField] private float fireRate = 0.5f;
+    [SerializeField] private int damage;
     [SerializeField] private float speedBullet = 1;
+
+    [Header("Logic Shooting")]
+    [SerializeField] private Transform firePoint;
     [SerializeField] private Transform parentBulletPlayer;
-    [SerializeField] private UnityEvent OnAttack;
+    [SerializeField] private float fireRate = 0.5f;
+
+    public UnityEvent OnAttack;
 
     private float lastTimeShoot;
+    private bool isOnFocus;
     private List<Bullet> bulletsPool = new List<Bullet>();
 
-    public void TryToShoot()
-    {
-        if(Time.time - lastTimeShoot >= fireRate) Shoot();
-    }
+    public void TryToShoot() { if (Time.time - lastTimeShoot >= fireRate && isOnFocus) Shoot(); }
 
     private void Shoot()
     {
-        //Vector3 dir = Physics.Linecast(firePoint.position, cam.transform.forward * 100);
-
         Bullet b = GetBullet();
+
         b.gameObject.SetActive(true); b.transform.position = firePoint.position;
-        b.Dir = Camera.main.transform.forward + Camera.main.transform.right * 0.05f; // Camera.main.transform.up * 0.1f;//+ Camera.main.transform.right * 0.3f;
+        b.Dir = Camera.main.transform.forward;
         b.Speed = speedBullet;
         OnAttack?.Invoke();
 
@@ -54,4 +55,6 @@ public class Player_Shooter : MonoBehaviour
         b.gameObject.SetActive(false);
         return b;
     }
+
+    public void IsOnFocus(bool isOnFocus) => this.isOnFocus = isOnFocus;
 }

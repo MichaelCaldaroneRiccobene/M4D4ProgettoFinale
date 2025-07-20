@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +7,7 @@ public class PlayerUI : MonoBehaviour
 {
     [Header("Setting UI Player")]
     [SerializeField] private Image imageHp;
+    [SerializeField] private Image crossX;
     [SerializeField] private Image crown;
     [SerializeField] private TextMeshProUGUI textTime;
     [SerializeField] private TextMeshProUGUI textCoin;
@@ -30,6 +29,7 @@ public class PlayerUI : MonoBehaviour
     private void Start()
     {
         UpdatePannel();
+        crossX.gameObject.SetActive(false);
     }
 
     public void UpdateLife(int hp,int maxHp) => imageHp.fillAmount = (float)hp/maxHp;
@@ -37,6 +37,8 @@ public class PlayerUI : MonoBehaviour
     public void UpdateTime(int minuts,float seconds) => textTime.SetText(string.Format("{0:00}:{1:00}", minuts, (int)seconds));
 
     public void UpdateCoin(int coinTake, int coinToT) => textCoin.SetText(string.Format("{00}:{1:00}", coinTake, coinToT));
+
+    public void IsOnAim(bool onAim) => crossX.gameObject.SetActive(onAim);
 
     public void OpenMenu()
     {
@@ -49,11 +51,8 @@ public class PlayerUI : MonoBehaviour
             Cursor.visible = true;
             Time.timeScale = 0;
         }
-        else
-        {
-            ResumeGame();
-        }
-    }
+        else ResumeGame();
+    } 
 
     public void ResumeGame()
     {
@@ -113,18 +112,9 @@ public class PlayerUI : MonoBehaviour
         Cursor.visible = true;
     }
 
-    public void GoMenu()
-    {
-        SceneManager.LoadScene(nameMenu);
-    }
+    public void GoMenu() => SceneManager.LoadScene(nameMenu);
 
-    public void GoNextLevel()
-    {
-        SceneManager.LoadScene(nameNextLevel);
-    }
+    public void GoNextLevel() => SceneManager.LoadScene(nameNextLevel);
 
-    public void RePlay()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    public void RePlay() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 }

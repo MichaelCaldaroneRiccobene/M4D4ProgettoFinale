@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4771523064711905132}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GiroSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,6 +45,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4771523064711905132}
     m_Modifications:
+    - target: {fileID: 5051784185813077, guid: d828eb711b1563a4fb2f21f6cef22728, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 501360926894416733, guid: d828eb711b1563a4fb2f21f6cef22728,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6114002422359274066, guid: d828eb711b1563a4fb2f21f6cef22728,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -100,6 +109,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TheSpalzatore Piccolo
       objectReference: {fileID: 0}
+    - target: {fileID: 7367334049906005448, guid: d828eb711b1563a4fb2f21f6cef22728,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -123,6 +137,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415094066369807530, guid: 4abe15ca74bcfa64b9a35b2e9cedf32e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4546225711452830285, guid: 4abe15ca74bcfa64b9a35b2e9cedf32e,
         type: 3}
@@ -243,10 +262,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4918207481891629226, guid: 2408fbf0d5741a34f949b871ffc50627,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6311972700865487578, guid: 2408fbf0d5741a34f949b871ffc50627,
         type: 3}
       propertyPath: m_Name
       value: GironeParent
+      objectReference: {fileID: 0}
+    - target: {fileID: 6311972700865487578, guid: 2408fbf0d5741a34f949b871ffc50627,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -322,6 +351,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: TheSpalzatore (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4003819162436221609, guid: 5a0b4b436e0b9c249b198d1bfc8b23df,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633180759327748391, guid: 5a0b4b436e0b9c249b198d1bfc8b23df,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8895118571222951578, guid: 5a0b4b436e0b9c249b198d1bfc8b23df,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -341,6 +385,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4771523064711905132}
     m_Modifications:
+    - target: {fileID: 5051784185813077, guid: d828eb711b1563a4fb2f21f6cef22728, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 501360926894416733, guid: d828eb711b1563a4fb2f21f6cef22728,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6114002422359274066, guid: d828eb711b1563a4fb2f21f6cef22728,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -395,6 +448,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TheSpalzatore Piccolo (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367334049906005448, guid: d828eb711b1563a4fb2f21f6cef22728,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -469,6 +527,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TheSpalzatore
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003819162436221609, guid: 5a0b4b436e0b9c249b198d1bfc8b23df,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633180759327748391, guid: 5a0b4b436e0b9c249b198d1bfc8b23df,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8895118571222951578, guid: 5a0b4b436e0b9c249b198d1bfc8b23df,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
@@ -12,11 +10,11 @@ public class CheckPoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Player_Controller player_Controller = other.GetComponent<Player_Controller>();
-        if(player_Controller != null )
+        Player_Return_To_CheckPoint player_Return_To_CheckPoint = other.GetComponent<Player_Return_To_CheckPoint>();
+        if(player_Return_To_CheckPoint != null )
         {
-            player_Controller.PosLastCheckPoint = transform.position;
-            player_Controller.RotLastCheckPoint = transform.rotation;
+            player_Return_To_CheckPoint.PosLastCheckPoint = transform.position;
+            player_Return_To_CheckPoint.RotLastCheckPoint = transform.rotation;
             Game_Manager.CheckPointPress(this);
         }
     }

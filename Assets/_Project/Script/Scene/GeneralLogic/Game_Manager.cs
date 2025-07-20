@@ -38,10 +38,7 @@ public class Game_Manager : MonoBehaviour
         updateCoinText?.Invoke(coinTake, coinToT);
     }
 
-    private void Update()
-    {
-        Clock();
-    }
+    private void Update() => Clock();
 
     private void Clock()
     {
@@ -77,7 +74,7 @@ public class Game_Manager : MonoBehaviour
             Coin coin = coins.transform.GetChild(i).GetComponent<Coin>();
             if (coin != null)
             {
-                coin.game_Manager = this;
+                coin.Game_Manager = this;
                 coinToT++;
             }
         }
@@ -123,7 +120,7 @@ public class Game_Manager : MonoBehaviour
         onFinishGame?.Invoke();
     }
 
-    public void TakeACoin()
+    public void OnTakeCoin()
     {
         coinTake++;
         updateCoinText?.Invoke(coinTake, coinToT);

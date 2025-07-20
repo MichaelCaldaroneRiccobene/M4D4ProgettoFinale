@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9001389983245958976}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GiroSphereAlpha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 8974668565333749638}
   - component: {fileID: 631914017778772269}
   - component: {fileID: 7004429049096393124}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Manico
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2144715070113249675}
   - component: {fileID: 1845756687381959088}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TheSpalzatore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,10 +190,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df2c794ec0a8a44d8006332da638b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isRandomSpeed: 1
-  minSpeed: 0.5
-  maxSpeed: 2
+  speedRotation: 5
+  isRandomSpeedRotation: 0
+  minSpeedRotation: 0.5
+  maxSpeedRotation: 3
+  rotationInX: 0
+  rotationInY: 0
+  rotationInZ: 0
 --- !u!1 &538383209927726197
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +206,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6969474874481167203}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sbalzatore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1169419231314251465}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sbalzatore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,10 +311,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df2c794ec0a8a44d8006332da638b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isRandomSpeed: 1
-  minSpeed: 0.5
-  maxSpeed: 1
+  speedRotation: 5
+  isRandomSpeedRotation: 0
+  minSpeedRotation: 0.5
+  maxSpeedRotation: 3
+  rotationInX: 0
+  rotationInY: 0
+  rotationInZ: 0
 --- !u!33 &1809521479553758954
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -393,7 +399,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8333396405296176565}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sbalzatore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +435,7 @@ GameObject:
   - component: {fileID: 2313059963948265757}
   - component: {fileID: 4607774699489956016}
   - component: {fileID: 8488009448594811042}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Manico
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4670653527144095414}
   - component: {fileID: 5170961838907590352}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TheSpalzatore (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,10 +575,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df2c794ec0a8a44d8006332da638b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isRandomSpeed: 1
-  minSpeed: 0.5
-  maxSpeed: 2
+  speedRotation: 5
+  isRandomSpeedRotation: 0
+  minSpeedRotation: 0.5
+  maxSpeedRotation: 3
+  rotationInX: 0
+  rotationInY: 0
+  rotationInZ: 0
 --- !u!1 &2391952437979886872
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +595,7 @@ GameObject:
   - component: {fileID: 7496588884262093806}
   - component: {fileID: 4565778130783966518}
   - component: {fileID: 6473394769598966809}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -708,7 +717,7 @@ GameObject:
   - component: {fileID: 711992644958487975}
   - component: {fileID: 126975763973692450}
   - component: {fileID: 6905253208399874389}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -829,7 +838,7 @@ GameObject:
   - component: {fileID: 37627293023560828}
   - component: {fileID: 2648229274075741684}
   - component: {fileID: 4635865074245885515}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -937,7 +946,7 @@ GameObject:
   - component: {fileID: 7383302836366543173}
   - component: {fileID: 6551950405294509933}
   - component: {fileID: 6718971149448980330}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1058,7 +1067,7 @@ GameObject:
   - component: {fileID: 7276488382357308115}
   - component: {fileID: 9157756544927753182}
   - component: {fileID: 8761175615419440054}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Manico
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1163,7 +1172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7328898634145395692}
   - component: {fileID: 4161187702691866981}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TheSpalzatore (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1198,10 +1207,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df2c794ec0a8a44d8006332da638b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isRandomSpeed: 1
-  minSpeed: 0.5
-  maxSpeed: 2
+  speedRotation: 5
+  isRandomSpeedRotation: 0
+  minSpeedRotation: 0.5
+  maxSpeedRotation: 3
+  rotationInX: 0
+  rotationInY: 0
+  rotationInZ: 0
 --- !u!1 &6363245637798118854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,7 +1223,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5522936390973096086}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sbalzatore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1247,7 +1259,7 @@ GameObject:
   - component: {fileID: 4997366912325730407}
   - component: {fileID: 9137684550488006049}
   - component: {fileID: 8183770942495365757}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Manico
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1355,7 +1367,7 @@ GameObject:
   - component: {fileID: 664607277349218181}
   - component: {fileID: 1969619772777755458}
   - component: {fileID: 3692893035054593355}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1473,7 +1485,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4719931164597976631}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sbalzatore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1510,7 +1522,7 @@ GameObject:
   - component: {fileID: 457486703296134757}
   - component: {fileID: 5779025417563015449}
   - component: {fileID: 7301532441493100235}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1629,7 +1641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6108635295393839981}
   - component: {fileID: 4128910881980847019}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TheSpalzatore Piccolo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1664,10 +1676,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df2c794ec0a8a44d8006332da638b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isRandomSpeed: 1
-  minSpeed: 0.5
-  maxSpeed: 2
+  speedRotation: 5
+  isRandomSpeedRotation: 0
+  minSpeedRotation: 0.5
+  maxSpeedRotation: 3
+  rotationInX: 0
+  rotationInY: 0
+  rotationInZ: 0
 --- !u!1 &8756920474791855133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,7 +1800,7 @@ GameObject:
   - component: {fileID: 8319089895669537700}
   - component: {fileID: 191549941269468953}
   - component: {fileID: 8594705190787355170}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Manico
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1890,7 +1905,7 @@ GameObject:
   m_Component:
   - component: {fileID: 85494477283457342}
   - component: {fileID: 9028084574668583566}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TheSpalzatore Piccolo (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1925,7 +1940,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df2c794ec0a8a44d8006332da638b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isRandomSpeed: 1
-  minSpeed: 0.5
-  maxSpeed: 2
+  speedRotation: 5
+  isRandomSpeedRotation: 0
+  minSpeedRotation: 0.5
+  maxSpeedRotation: 3
+  rotationInX: 0
+  rotationInY: 0
+  rotationInZ: 0

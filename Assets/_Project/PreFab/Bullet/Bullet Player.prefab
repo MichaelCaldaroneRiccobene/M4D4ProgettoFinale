@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6528027613131858245}
   - component: {fileID: 5175686696846815570}
   - component: {fileID: 6119194188520038289}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,9 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 10
-  Damage: 0
   radius: 5
-  force: 3
+  force: 1.5
 --- !u!54 &5175686696846815570
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -60,7 +59,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5248002255550745536}
   serializedVersion: 4
-  m_Mass: 5
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -92,7 +91,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 384
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -111,7 +110,7 @@ GameObject:
   - component: {fileID: 7507724819960658375}
   - component: {fileID: 2883384084190667497}
   - component: {fileID: 6283103561965483782}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,6 +190,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3261432889785018464}
     m_Modifications:
+    - target: {fileID: 1206498299248906752, guid: af6c1e3f046eecd4d81330aeb285600f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1206498299248906754, guid: af6c1e3f046eecd4d81330aeb285600f,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -278,8 +282,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1206498299807332555, guid: af6c1e3f046eecd4d81330aeb285600f,
         type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206498299807332555, guid: af6c1e3f046eecd4d81330aeb285600f,
+        type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747002053765534775, guid: af6c1e3f046eecd4d81330aeb285600f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8336275602659357518, guid: af6c1e3f046eecd4d81330aeb285600f,
         type: 3}
