@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refCoin: {fileID: 814451496843090269}
   minScale: 0
-  timeInterpolateMinScale: 2
+  timeInterpolateMinScale: 3
 --- !u!114 &644270318728218334
 MonoBehaviour:
   m_ObjectHideFlags: 0

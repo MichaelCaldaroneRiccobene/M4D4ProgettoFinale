@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9123529448669261968}
   - component: {fileID: 3539160820057177086}
   - component: {fileID: 1450780154685264736}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PropTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 5640747070515843872}
   - component: {fileID: 5638274206117144320}
   - component: {fileID: 5628050784863233078}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SM_PolygonPrototype_Prop_Target_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}

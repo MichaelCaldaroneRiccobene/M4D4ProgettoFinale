@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7300551785178451922}
   - component: {fileID: 4105781236415560552}
   - component: {fileID: 1808618143817749808}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6576099651646921853}
   - component: {fileID: 8008851474817381033}
   - component: {fileID: 7577227469051624160}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,6 +132,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mesh: {fileID: 4736193097733834205}
   poofVfx: {fileID: 9157105887711914197, guid: c4f829cb7dd4b864caf8832ec5b1ee55, type: 3}
+  heightSpawn: 10
+  speedForGoToThePoint: 2
 --- !u!54 &8008851474817381033
 Rigidbody:
   m_ObjectHideFlags: 0

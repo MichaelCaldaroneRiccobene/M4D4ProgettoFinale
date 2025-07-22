@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8003423967912456503}
   - component: {fileID: 8773146810165291719}
   - component: {fileID: 5714299272040925566}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8544580979682959356}
   - component: {fileID: 8616089154065973013}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wuster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,10 +220,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6750382553032934366, guid: 3ec42da7daf917c43b329a74304d7e09,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7407824164264045246, guid: 3ec42da7daf917c43b329a74304d7e09,
         type: 3}
       propertyPath: m_Name
       value: Wusterini (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407824164264045246, guid: 3ec42da7daf917c43b329a74304d7e09,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -294,10 +304,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6750382553032934366, guid: 3ec42da7daf917c43b329a74304d7e09,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7407824164264045246, guid: 3ec42da7daf917c43b329a74304d7e09,
         type: 3}
       propertyPath: m_Name
       value: Wusterini (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407824164264045246, guid: 3ec42da7daf917c43b329a74304d7e09,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -368,10 +388,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6750382553032934366, guid: 3ec42da7daf917c43b329a74304d7e09,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7407824164264045246, guid: 3ec42da7daf917c43b329a74304d7e09,
         type: 3}
       propertyPath: m_Name
       value: Wusterini (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407824164264045246, guid: 3ec42da7daf917c43b329a74304d7e09,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -442,10 +472,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6750382553032934366, guid: 3ec42da7daf917c43b329a74304d7e09,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7407824164264045246, guid: 3ec42da7daf917c43b329a74304d7e09,
         type: 3}
       propertyPath: m_Name
       value: Wusterini
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407824164264045246, guid: 3ec42da7daf917c43b329a74304d7e09,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
