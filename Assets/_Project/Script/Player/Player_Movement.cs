@@ -43,6 +43,7 @@ public class Player_Movement : MonoBehaviour
     private void LogicMovement()
     {
         if (Camera.main == null) return;
+        if(rb.isKinematic) return;
 
         Vector3 forward = Camera.main.transform.forward; Vector3 right = Camera.main.transform.right;
         forward.y = 0; right.y = 0;
@@ -53,10 +54,8 @@ public class Player_Movement : MonoBehaviour
         {
             direction.Normalize();
             Movement(direction);
-        }
-        else
-        {
-            if (direction.sqrMagnitude > 0.1f) { if (isOnGround) DownForce(); }
+
+            if (isOnGround) DownForce();
         }
 
         if (isFocusMode)
@@ -100,9 +99,8 @@ public class Player_Movement : MonoBehaviour
         onAnimationWalkAndDirection?.Invoke(currentSpeed, direction);
     }
 
-    public void TakeDirection(Vector3 direction,float horizontal,float vertical)
+    public void TakeDirection(float horizontal,float vertical)
     {
-        this.direction = direction;
         this.horizontal = horizontal;
         this.vertical = vertical;
     }

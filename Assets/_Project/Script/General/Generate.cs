@@ -62,10 +62,17 @@ public class Generate : MonoBehaviour
 
     private void ObjRotation(GameObject obj)
     {
-        if (isRandomRotationAll) obj.transform.rotation = Quaternion.Euler(Random.Range(minRot, maxRot), Random.Range(minRot, maxRot), Random.Range(minRot, maxRot));
+        if (isRandomRotationAll)
+        {
+            obj.transform.rotation = Quaternion.Euler(Random.Range(minRot, maxRot), Random.Range(minRot, maxRot), Random.Range(minRot, maxRot));
+            return;
+        }
+        Vector3 finalRotation = obj.transform.eulerAngles;
 
-        if (isRandomRotationX) obj.transform.rotation = Quaternion.Euler(Random.Range(minRot, maxRot),transform.rotation.y,transform.rotation.z);
-        if (isRandomRotationY) obj.transform.rotation = Quaternion.Euler(transform.rotation.x, Random.Range(minRot, maxRot), transform.rotation.z);
-        if (isRandomRotationZ) obj.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Random.Range(minRot, maxRot));
+        if (isRandomRotationX) finalRotation.x = Random.Range(minRot, maxRot);
+        if (isRandomRotationY) finalRotation.y = Random.Range(minRot, maxRot);
+        if (isRandomRotationZ) finalRotation.z = Random.Range(minRot, maxRot);
+
+        obj.transform.rotation = Quaternion.Euler(finalRotation);
     }
 }

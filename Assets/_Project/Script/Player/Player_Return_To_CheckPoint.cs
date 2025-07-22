@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player_Return_To_CheckPoint : MonoBehaviour, I_ITouch_Water
+public class Player_Return_To_CheckPoint : MonoBehaviour, I_ITouch_Danger
 {
     [Header("Setting CheckPoint")]
     [SerializeField] private GameObject refPlayer;
     [SerializeField] private float speedSpawnCheckPoint = 1.0f;
+    [SerializeField] private float heightMidTravel = 15f;
 
     public UnityEvent onRecoverAnimation;
+    public UnityEvent<bool> onDisableInput;
     public Vector3 PosLastCheckPoint { get; set; }
     public Quaternion RotLastCheckPoint { get; set; }
 
@@ -20,14 +22,15 @@ public class Player_Return_To_CheckPoint : MonoBehaviour, I_ITouch_Water
         rb = GetComponent<Rigidbody>(); 
 
         PosLastCheckPoint = transform.position;
-        RotLastCheckPoint = Quaternion.Euler(0, 90, 0);
+        RotLastCheckPoint = transform.rotation;
     }
 
-    public void Water() => StartCoroutine(GoToCheckPoint());
+    public void Touch_Danger() => StartCoroutine(GoToCheckPoint());
 
     private IEnumerator GoToCheckPoint()
     {
         rb.isKinematic = true;
+        onDisableInput?.Invoke(true);
         refPlayer.gameObject.SetActive(false);
 
         Vector3 startLocation = transform.position;
@@ -35,7 +38,7 @@ public class Player_Return_To_CheckPoint : MonoBehaviour, I_ITouch_Water
         endLocation.y += 2;
 
         Vector3 midLocation = Vector3.Lerp(startLocation, endLocation, 0.5f);
-        Vector3 mid = new Vector3(midLocation.x, startLocation.y + 20, midLocation.z);
+        Vector3 mid = new Vector3(midLocation.x, startLocation.y + heightMidTravel, midLocation.z);
 
         float progression = 0;
         while (progression < 1)
@@ -64,6 +67,7 @@ public class Player_Return_To_CheckPoint : MonoBehaviour, I_ITouch_Water
         transform.rotation = RotLastCheckPoint;
 
         refPlayer.gameObject.SetActive(true);
+        onDisableInput?.Invoke(false);
         onRecoverAnimation?.Invoke();
     }
 }

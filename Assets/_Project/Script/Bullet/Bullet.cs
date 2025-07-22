@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     [Header("Setting")]
     [SerializeField] protected float lifeTime = 5;
 
-    public float Speed {  get; set; }
+    public float SpeedBullet { get; set; }
     public Vector3 Dir {  get; set; }
     public int Damage { get; set; } 
 
@@ -18,25 +18,31 @@ public class Bullet : MonoBehaviour
     public virtual void OnEnable()
     {
         rb.isKinematic = false;
+
         rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        rb.rotation = Quaternion.identity;
+
+        rb.AddForce(Dir.normalized * SpeedBullet, ForceMode.VelocityChange);
 
         Invoke("Disable", lifeTime);
     }
 
-    public virtual void FixedUpdate() => rb.MovePosition(rb.position + Dir * (Speed * Time.fixedDeltaTime));
     public virtual void OnDisable() => CancelInvoke();
 
     public virtual void Disable()
     {
-        rb.isKinematic = true;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero ;
 
+        rb.isKinematic = true;
         gameObject.SetActive(false);
     }
 
     public virtual void OnCollisionEnter(Collision collision)
     {
-        I_IDamage damage = collision.collider.GetComponent<I_IDamage>();
-
+        I_IDamage damage = collision.collider.GetComponent<I_IDamage>();  
+        
         if (damage != null) damage.Damage(-Damage);
     }
 }

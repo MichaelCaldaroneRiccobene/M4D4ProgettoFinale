@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Cinemat_Camera : MonoBehaviour
@@ -12,6 +13,8 @@ public class Cinemat_Camera : MonoBehaviour
     [SerializeField] private float timeForGoToMainCamera;
     [SerializeField] private Image[] imageUiPlayer;
     [SerializeField] private TextMeshProUGUI[] textUiPlayer;
+
+    public UnityEvent<bool> onDisableInput;
 
     //[SerializeField] private Vector3[] points; Old
 
@@ -53,6 +56,7 @@ public class Cinemat_Camera : MonoBehaviour
 
     private IEnumerator GoToMainCamera()
     {
+        onDisableInput?.Invoke(true);
         yield return new WaitForSeconds(timeForGoToMainCamera);
 
         Animator anim = GetComponent<Animator>();
@@ -60,6 +64,7 @@ public class Cinemat_Camera : MonoBehaviour
 
         Vector3 startLocation = transform.position;
         Vector3 endLocation = camController.transform.position;
+        Quaternion startRot = transform.rotation;
 
         float progress = 0;
 
@@ -68,7 +73,7 @@ public class Cinemat_Camera : MonoBehaviour
             progress += Time.deltaTime * speed;
             float smooth = Mathf.SmoothStep(0, 1, progress);
             Vector3 interpolate = Vector3.Lerp(startLocation, endLocation, smooth);
-            Quaternion interpolateRot = Quaternion.Lerp(transform.rotation, camController.transform.rotation, progress);
+            Quaternion interpolateRot = Quaternion.Lerp(startRot, camController.transform.rotation, progress);
 
             transform.position = interpolate;
             transform.rotation = interpolateRot;
@@ -78,6 +83,7 @@ public class Cinemat_Camera : MonoBehaviour
         gameObject.SetActive(false);
         RestorImage();
         RestorText();
+        onDisableInput?.Invoke(false);
     }
 
     private void RestorImage()

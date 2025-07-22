@@ -8,12 +8,15 @@ public class Player_Shooter : MonoBehaviour
     [Header("Bullet Setting")]
     [SerializeField] private Bullet bullet;
     [SerializeField] private int damage;
-    [SerializeField] private float speedBullet = 1;
+    [SerializeField] protected float speedBullet = 0.5f;
 
-    [Header("Logic Shooting")]
+    [Header("Setting Shooting")]
     [SerializeField] private Transform firePoint;
     [SerializeField] private Transform parentBulletPlayer;
     [SerializeField] private float fireRate = 0.5f;
+
+    [Header("Setting Pooling")]
+    [SerializeField] private int initialPoolSizeBullet = 20;
 
     public UnityEvent OnAttack;
 
@@ -21,21 +24,29 @@ public class Player_Shooter : MonoBehaviour
     private bool isOnFocus;
     private List<Bullet> bulletsPool = new List<Bullet>();
 
+    private void Start()
+    {
+        for (int i = 0; i < initialPoolSizeBullet; ++i) SpawnBullet();
+    }
+
     public void TryToShoot() { if (Time.time - lastTimeShoot >= fireRate && isOnFocus) Shoot(); }
 
     private void Shoot()
     {
         Bullet b = GetBullet();
-
-        b.gameObject.SetActive(true); b.transform.position = firePoint.position;
+   
+        b.transform.position = firePoint.position;
         b.Dir = Camera.main.transform.forward;
-        b.Speed = speedBullet;
+        b.SpeedBullet = speedBullet;
+        b.Damage = damage;
+
+        b.gameObject.SetActive(true);
         OnAttack?.Invoke();
 
         lastTimeShoot = Time.time;
     }
 
-    public virtual Bullet GetBullet()
+    public Bullet GetBullet()
     {
         foreach (Bullet b in bulletsPool)
         {
@@ -44,15 +55,15 @@ public class Player_Shooter : MonoBehaviour
         return SpawnBullet();
     }
 
-    public virtual Bullet SpawnBullet()
+    public Bullet SpawnBullet()
     {
         Bullet b;
+
         if (parentBulletPlayer != null) b = Instantiate(bullet, parentBulletPlayer);
         else b = Instantiate(bullet);
-
-        bulletsPool.Add(b);
-        b.Damage = damage;
         b.gameObject.SetActive(false);
+        bulletsPool.Add(b);
+        
         return b;
     }
 

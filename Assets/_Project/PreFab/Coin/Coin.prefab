@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4806724045935593226}
   - component: {fileID: 291050400772178012}
+  - component: {fileID: 6071885397201673847}
   - component: {fileID: 644270318728218334}
   - component: {fileID: 7036604959341999781}
   m_Layer: 0
@@ -113,7 +114,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1857455421830413726}
   - {fileID: 814451496843090269}
@@ -131,6 +132,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb2a91a0c37ba44085bc30bdf81dea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AnimationTakeCoin:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6071885397201673847}
+        m_TargetAssemblyTypeName: CoinAnimation, Assembly-CSharp
+        m_MethodName: AnimationTakeCoin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6071885397201673847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917971103795174828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be37609395bc25c429499526138ed3d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  refCoin: {fileID: 814451496843090269}
+  minScale: 0
+  timeInterpolateMinScale: 2
 --- !u!114 &644270318728218334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,7 +271,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64063659448232732, guid: 160a6121b4d25254da31bdab63ad82b7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

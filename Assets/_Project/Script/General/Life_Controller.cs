@@ -18,15 +18,10 @@ public class Life_Controller : MonoBehaviour, I_IDamage
 
     public void UpdateHp(int ammount)
     {
-        int currentHp = Hp;
         Hp += ammount;
+        onLFChange?.Invoke(Hp, MaxHp);
 
-        if(currentHp > Hp)
-        {
-            if (isDead()) OnDead();
-            onLFChange?.Invoke(Hp,MaxHp);
-        }
-        else onLFChange?.Invoke(Hp, MaxHp);
+        if (isDead()) OnDead();
     }
 
     public void Damage(int ammount) => UpdateHp(ammount);

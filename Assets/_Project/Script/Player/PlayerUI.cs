@@ -36,7 +36,7 @@ public class PlayerUI : MonoBehaviour
 
     public void UpdateTime(int minuts,float seconds) => textTime.SetText(string.Format("{0:00}:{1:00}", minuts, (int)seconds));
 
-    public void UpdateCoin(int coinTake, int coinToT) => textCoin.SetText(string.Format("{00}:{1:00}", coinTake, coinToT));
+    public void UpdateCoin(int coinTake, int coinToT) => textCoin.SetText(string.Format("{0}/{1}", coinTake, coinToT));
 
     public void IsOnAim(bool onAim) => crossX.gameObject.SetActive(onAim);
 

@@ -10,15 +10,14 @@ public class Game_Manager : MonoBehaviour
     [SerializeField] private float timeSecond = 41;
 
     [Header("Take Important Stuff")]
-    [SerializeField] private Transform coins;
-    [SerializeField] private Transform checkPoint;
+    [SerializeField] private Transform coinsInScene;
+    [SerializeField] private Transform checkPointInScene;
 
     [SerializeField] private Transform turretsInScene;
     [SerializeField] private Transform parentBulletTurret;
 
-    [SerializeField] private Player_Controller player_Controller;
+    [SerializeField] private Transform targetTurret;
 
-    public UnityEvent<bool> finishLevel;
     public UnityEvent onFinishGame;
     public UnityEvent onLoseInTime;
     public UnityEvent<int,float> updateTime;
@@ -31,7 +30,7 @@ public class Game_Manager : MonoBehaviour
 
     private bool isEndTime;
 
-    private void Start()
+    private void Awake()
     {
         Time.timeScale = 1;
         FindItems();
@@ -64,14 +63,15 @@ public class Game_Manager : MonoBehaviour
     {
         FindCoins();
         FindCheckPoints();
-        FindAndSetUpTurrets();
+        FindControlTurret();
     }
 
     private void FindCoins()
     {
-        for (int i = 0; i < coins.childCount; i++)
+        if (coinsInScene == null) return;
+        for (int i = 0; i < coinsInScene.childCount; i++)
         {
-            Coin coin = coins.transform.GetChild(i).GetComponent<Coin>();
+            Coin coin = coinsInScene.transform.GetChild(i).GetComponent<Coin>();
             if (coin != null)
             {
                 coin.Game_Manager = this;
@@ -82,9 +82,10 @@ public class Game_Manager : MonoBehaviour
 
     private void FindCheckPoints()
     {
-        for (int i = 0; i < checkPoint.childCount; i++)
+        if (checkPointInScene == null) return;
+        for (int i = 0; i < checkPointInScene.childCount; i++)
         {
-            CheckPoint point = checkPoint.transform.GetChild(i).GetComponent<CheckPoint>();
+            CheckPoint point = checkPointInScene.transform.GetChild(i).GetComponent<CheckPoint>();
             if (point != null)
             {
                 checkPointList.Add(point);
@@ -93,7 +94,7 @@ public class Game_Manager : MonoBehaviour
         }
     }
 
-    private void FindAndSetUpTurrets()
+    private void FindControlTurret()
     {
         if(turretsInScene == null) return;
         for (int i = 0; i < turretsInScene.childCount; i++)
@@ -101,7 +102,7 @@ public class Game_Manager : MonoBehaviour
             Control_Turrent control_Turrent = turretsInScene.transform.GetChild(i).GetComponent<Control_Turrent>();
             if (control_Turrent != null)
             {
-                control_Turrent.player_Controller = player_Controller;
+                control_Turrent.Target = targetTurret;
                 if(parentBulletTurret != null) control_Turrent.ParentBulletTurret = parentBulletTurret;
             }
         }
@@ -116,7 +117,6 @@ public class Game_Manager : MonoBehaviour
     private void isLastCoin()
     {
         Debug.Log("Go To Exit");
-        finishLevel?.Invoke(true);
         onFinishGame?.Invoke();
     }
 

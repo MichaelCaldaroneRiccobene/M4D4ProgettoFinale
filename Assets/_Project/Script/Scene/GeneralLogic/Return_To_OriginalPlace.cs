@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReturnToOriginalPlace : MonoBehaviour, I_ITouch_Water
+public class ReturnToOriginalPlace : MonoBehaviour, I_ITouch_Danger
 {
     [Header("Setting")]
     [SerializeField] private GameObject mesh;
@@ -33,7 +33,7 @@ public class ReturnToOriginalPlace : MonoBehaviour, I_ITouch_Water
         }
     }
 
-    public void Water() => StartCoroutine(GoStartLocation());
+    public void Touch_Danger() => StartCoroutine(GoStartLocation());
 
     IEnumerator GoStartLocation()
     {

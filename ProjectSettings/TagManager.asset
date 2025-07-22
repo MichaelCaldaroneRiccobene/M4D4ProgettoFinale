@@ -16,8 +16,8 @@ TagManager:
   - PlatForm
   - Player
   - BulletPlayer
-  - 
-  - 
+  - Turret
+  - BulletTurret
   - 
   - 
   - 

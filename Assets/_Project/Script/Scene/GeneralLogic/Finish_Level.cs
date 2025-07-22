@@ -10,7 +10,7 @@ public class FinishLevel : MonoBehaviour
     [SerializeField] private float newHeightWall;
     [SerializeField] private float speedLerp = 1;
 
-    [SerializeField] private UnityEvent onWin;
+    public UnityEvent onWin;
 
     private bool canFinishLevel;
     private void OnTriggerEnter(Collider other)
@@ -19,7 +19,7 @@ public class FinishLevel : MonoBehaviour
         if (player != null && canFinishLevel) onWin?.Invoke();
     }
 
-    public void FinishMap()
+    public void OnFinishLevel()
     {
         canFinishLevel = true;
         Vector3 oriPos = bigWall.position;
@@ -30,12 +30,13 @@ public class FinishLevel : MonoBehaviour
 
     private IEnumerator WallUpAnimation(Vector3 newPos)
     {
+        Vector3 startPos = bigWall.position;
         float progress = 0;
 
         while (progress < 1)
         {
             progress += Time.deltaTime * speedLerp;
-            bigWall.position = Vector3.Lerp(bigWall.position, newPos, progress);
+            bigWall.position = Vector3.Lerp(startPos, newPos, progress);
 
             yield return null;
         }

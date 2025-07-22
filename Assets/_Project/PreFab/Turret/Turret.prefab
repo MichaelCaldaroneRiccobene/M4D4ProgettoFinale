@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8673070846499658330}
   - component: {fileID: 8545258959301595468}
   - component: {fileID: 3555961740342765159}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cannone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 568283562726121834}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,9 +124,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6840843319207131177}
   - component: {fileID: 5632195354471906276}
+  - component: {fileID: -4263056146185701335}
   - component: {fileID: 8290987114373034130}
   - component: {fileID: 152690896059446379}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,18 +166,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b93482419c0e54429c1be94f3277d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToShoot: 10
-  speedAnimation: 0.1
-  fireRate: 1
-  bulletToShoot: 1
   damage: 10
-  hitForDeth: 3
-  timeForSpawnBullet: 0
-  bulletPreFab: {fileID: 1973084389933061739, guid: b2ad240f0e03537488ecbc59635dc5b3,
-    type: 3}
-  speedBullet: 10
+  speedBullet: 25
   firePoint: {fileID: 568283562726121834}
-  Player_Controller: {fileID: 0}
+  fireRate: 1
+  distanceToShoot: 80
+  hitForDeth: 3
+--- !u!114 &-4263056146185701335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4638856982404910724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7e6ce929ed267d4298567481d8e432c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedMoving: 0.2
+  isRandomSpeedMoving: 0
+  minSpeedMoving: 0.5
+  maxSpeedMoving: 3
+  newPos: {x: 0, y: 4, z: 0}
 --- !u!135 &8290987114373034130
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -232,7 +244,7 @@ GameObject:
   - component: {fileID: 6644191992449102826}
   - component: {fileID: 2314473376079410690}
   - component: {fileID: 2651260327008862056}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pupilla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +327,7 @@ GameObject:
   - component: {fileID: 7284407351594808799}
   - component: {fileID: 8156188571373016164}
   - component: {fileID: 850088998503915611}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Corpo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +410,7 @@ GameObject:
   - component: {fileID: 8414523211846282360}
   - component: {fileID: 924898504347004245}
   - component: {fileID: 6036820018987246206}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Occhio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
