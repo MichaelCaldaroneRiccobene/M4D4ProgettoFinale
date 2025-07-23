@@ -8,8 +8,7 @@ public class Object_Look_Camera : MonoBehaviour
     {
         if (Camera.main != null)
         {
-            transform.LookAt(Camera.main.transform.position);
-            transform.Rotate(0, 180, 0);
+            transform.rotation = Camera.main.transform.rotation;
         }       
     }
 }

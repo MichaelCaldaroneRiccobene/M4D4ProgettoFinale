@@ -20,7 +20,6 @@ public class Follow_Moving_PlatForm : MonoBehaviour
         if (collision.collider.TryGetComponent(out Moving_PlatForm platForm) && platForm == moving_PlatForm)
         {
             if(!rb.isKinematic) rb.velocity += platformVelocity;
-
             moving_PlatForm = null;
         }
     }

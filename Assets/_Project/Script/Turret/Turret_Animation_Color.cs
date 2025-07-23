@@ -1,13 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Turret_Animation_Color : MonoBehaviour, I_IDamage
 {
     [Header("Logic Life")]
     [SerializeField] private int hitForDeth = 3;
-    [SerializeField] private float timeForFlickering = 0.5f;
     [SerializeField] private int timeDoFlickering = 5;
+    [SerializeField] private float timeForFlickering = 0.1f;
 
     [Header("Get Mesh Render Turret")]
     [SerializeField] private MeshRenderer corpo;
@@ -15,6 +14,7 @@ public class Turret_Animation_Color : MonoBehaviour, I_IDamage
 
     private Color body;
     private Color eye;
+
     private bool isFlickering;
 
     private void Start()

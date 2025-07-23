@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlatForm_Parent : MonoBehaviour
 {
     [SerializeField] private float forceLivePlatForm = 25;
+
     private Vector3 velocityPlatForm;
     private Vector3 lastPos;
 

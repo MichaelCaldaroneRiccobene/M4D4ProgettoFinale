@@ -7,7 +7,7 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] private float speedWalk = 10;
     [SerializeField] private float maxWalkSpeed = 20;
 
-    [SerializeField] private float speedRun = 30;
+    [SerializeField] private float speedRun = 25;
     [SerializeField] private float maxRunSpeed = 30;
 
     [SerializeField] private float maxSpeedForWalkAnimation = 0.5f;
@@ -37,14 +37,15 @@ public class Player_Movement : MonoBehaviour
 
     private void Awake() => rb = GetComponent<Rigidbody>();
 
-    private void FixedUpdate() => LogicMovement();
+    private void FixedUpdate() => LogicRotationTarget();
 
-    private void LogicMovement()
+    private void LogicRotationTarget()
     {
         if (Camera.main == null) return;
         if(rb.isKinematic) return;
 
-        Vector3 forward = Camera.main.transform.forward; Vector3 right = Camera.main.transform.right;
+        Vector3 forward = Camera.main.transform.forward; 
+        Vector3 right = Camera.main.transform.right;
         forward.y = 0; right.y = 0;
 
         direction = forward * vertical + right * horizontal;

@@ -6,9 +6,11 @@ public class Generate : MonoBehaviour
 {
     [Header("General Setting")]
     [SerializeField] private GameObject[] objs;
+
     [SerializeField] private int xNumber;
     [SerializeField] private int zNumber;
     [SerializeField] private int yNumber;
+
     [SerializeField] private float space = 1;
     [SerializeField] private float timeForSpawn = 1;
 

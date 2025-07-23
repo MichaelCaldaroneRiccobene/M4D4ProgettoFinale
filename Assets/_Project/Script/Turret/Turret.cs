@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,8 +18,8 @@ public class Turret : MonoBehaviour
     public Control_Turrent Control_Turrent { get; set; }
 
     protected float lastTimeShoot;
-    protected bool isShooting;
     protected float distanceToTarget;
+    protected bool isShooting;
 
     public virtual void Update() => TryToShoot();
 

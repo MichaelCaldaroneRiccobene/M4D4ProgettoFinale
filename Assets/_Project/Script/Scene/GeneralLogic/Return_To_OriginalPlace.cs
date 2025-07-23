@@ -12,8 +12,8 @@ public class ReturnToOriginalPlace : MonoBehaviour, I_ITouch_Danger
     [SerializeField] private float speedForGoToThePoint = 2;
 
     private Vector3 startPos;
-    private Quaternion startRot;
     private Vector3 startScale;
+    private Quaternion startRot;
 
     private ParticleSystem particolPoof;
     private Rigidbody rb;

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,6 +12,7 @@ public class FinishLevel : MonoBehaviour
     public UnityEvent onWin;
 
     private bool canFinishLevel;
+
     private void OnTriggerEnter(Collider other)
     {
         Player_Controller player = other.GetComponent<Player_Controller>();

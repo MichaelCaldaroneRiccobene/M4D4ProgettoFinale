@@ -12,6 +12,7 @@ public class Player_Return_To_CheckPoint : MonoBehaviour, I_ITouch_Danger
 
     public UnityEvent onRecoverAnimation;
     public UnityEvent<bool> onDisableInput;
+
     public Vector3 PosLastCheckPoint { get; set; }
     public Quaternion RotLastCheckPoint { get; set; }
 

@@ -6,6 +6,7 @@ public class Danger_Object : MonoBehaviour
 {
     [Header("Setting")]
     [SerializeField] private int damageWater = 5;
+
     private void OnCollisionEnter(Collision collision)
     {
         I_IDamage i_IDamage = collision.collider.GetComponent<I_IDamage>();

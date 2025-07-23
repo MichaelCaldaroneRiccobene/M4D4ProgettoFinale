@@ -1,13 +1,14 @@
 using UnityEngine;
-
 public class Player_Animation : MonoBehaviour
 {
     [Header("Setting")]
     [SerializeField] private string paramNameSpeed = "Speed";
     [SerializeField] private string paramNameDirection = "Direction";
-    [SerializeField] private string paramNameIsGround = "IsGround";
+
     [SerializeField] private string paramNameAttack = "Attack";
     [SerializeField] private string paramNameRecover = "Recover";
+
+    [SerializeField] private string paramNameIsGround = "IsGround";
     [SerializeField] private string paramNameJump = "Jump";
     [SerializeField] private string paramNameJumpAir = "JumpAirSpeed";
 
@@ -15,9 +16,11 @@ public class Player_Animation : MonoBehaviour
     [SerializeField] private float maxSpeedJumpAir = 1f;
 
     private Animator animator;
+
     private float currentSpeed;
     private float direction;
     private float SpeedJumpAir;
+
     private bool isOnGround;
 
     private void Start() => animator = GetComponent<Animator>();
@@ -47,13 +50,7 @@ public class Player_Animation : MonoBehaviour
         animator.SetTrigger(paramNameAttack);
     }
 
-    public void OnJump()
-    {
-        if (!isOnGround) return;
-        animator.SetTrigger(paramNameJump);
-    }
-
-    public void OnJumpAir() => SpeedJumpAir = maxSpeedJumpAir;
+    public void Recover() => animator.SetTrigger(paramNameRecover);
 
     public void IsOnGround(bool isOnGround)
     {
@@ -61,5 +58,11 @@ public class Player_Animation : MonoBehaviour
         this.isOnGround = isOnGround;;
     }
 
-    public void Recover() => animator.SetTrigger(paramNameRecover);
+    public void OnJump()
+    {
+        if (!isOnGround) return;
+        animator.SetTrigger(paramNameJump);
+    }
+
+    public void OnJumpAir() => SpeedJumpAir = maxSpeedJumpAir;
 }

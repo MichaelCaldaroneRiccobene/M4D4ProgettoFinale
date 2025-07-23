@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,10 +6,12 @@ using UnityEngine.UI;
 
 public class Cinemat_Camera : MonoBehaviour
 {
+    //Ho scoperto le altre camere dopo, e non volevo buttare lo script, le prossime volte utilizzero le altre camere 
     [Header("Setting")]
-    [SerializeField] private float speed = 0.8f; 
     [SerializeField] private Transform camPlayer;
+    [SerializeField] private float speedCamera = 0.8f; 
     [SerializeField] private float timeForGoToMainCamera;
+
     [SerializeField] private Image[] imageUiPlayer;
     [SerializeField] private TextMeshProUGUI[] textUiPlayer;
 
@@ -67,25 +68,32 @@ public class Cinemat_Camera : MonoBehaviour
 
         Vector3 startLocation = transform.position;
         Vector3 endLocation = camPlayer.position;
-        Quaternion startRot = transform.rotation;
+
+        Quaternion startRotation = transform.rotation;
+        Quaternion endRotation = camPlayer.rotation;
 
         float progress = 0;
 
         while (progress < 1)
         {
-            progress += Time.deltaTime * speed;
+            progress += Time.deltaTime * speedCamera;
             float smooth = Mathf.SmoothStep(0, 1, progress);
+
             Vector3 interpolate = Vector3.Lerp(startLocation, endLocation, smooth);
-            Quaternion interpolateRot = Quaternion.Lerp(startRot, camPlayer.rotation, progress);
+            Quaternion interpolateRot = Quaternion.Lerp(startRotation, endRotation, progress);
 
             transform.position = interpolate;
             transform.rotation = interpolateRot;
+
             yield return null;
         }
+
         camPlayer.gameObject.SetActive(true);
         gameObject.SetActive(false);
+
         RestorImage();
         RestorText();
+
         onDisableInput?.Invoke(false);
     }
 

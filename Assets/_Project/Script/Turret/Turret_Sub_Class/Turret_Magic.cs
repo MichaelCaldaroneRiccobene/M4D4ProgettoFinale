@@ -27,6 +27,7 @@ public class Turret_Magic : Turret
             Vector3 randomPos = new Vector3(Random.Range(0.5f, 3) * factor, Random.Range(0.5f, 3) * factor, Random.Range(0.5f, 3) * factor);
 
             Bullet b = Control_Turrent.GetBullet();          
+
             b.transform.position = firePoint.position + randomPos;
             b.Dir = Target.transform.position - transform.position;
             b.SpeedBullet = speedBullet;

@@ -20,6 +20,7 @@ public class Game_Manager : MonoBehaviour
 
     public UnityEvent onFinishGame;
     public UnityEvent onLoseInTime;
+
     public UnityEvent<int,float> updateTime;
     public UnityEvent<int,int> updateCoinText;
 

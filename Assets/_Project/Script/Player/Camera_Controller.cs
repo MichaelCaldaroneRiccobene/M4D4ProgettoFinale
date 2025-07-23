@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Camera_Controller : MonoBehaviour
@@ -7,22 +5,26 @@ public class Camera_Controller : MonoBehaviour
     [Header("Setting")]
     [SerializeField] Transform target;
     [SerializeField] Vector3 offSetTPS;
+
     [SerializeField] float minPitch = -10;
     [SerializeField] float maxPitch = 80;
 
     [Header("Setting Camera Specifics")]
     [SerializeField] private float sensitivityNormal = 5;
     [SerializeField] private float sensitivityFocus = 2.5f;
+
     [SerializeField] private float maxFov = 50;
     [SerializeField] private float minFov = 30;
 
     private float sensitivity;
-    private bool isOnFocus = false;
 
     private float mouseInputX;
     private float mouseInputY;
+
     private float pitch;
     private float yaw;
+
+    private bool isOnFocus = false;
 
     private void Awake()
     {
@@ -61,8 +63,6 @@ public class Camera_Controller : MonoBehaviour
 
     private void CameraMovement()
     {
-        mouseInputX = Input.GetAxis("Mouse X"); mouseInputY = Input.GetAxis("Mouse Y");
-
         pitch -= mouseInputY * sensitivity * Time.deltaTime; 
         yaw += mouseInputX * sensitivity * Time.deltaTime;
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
@@ -72,6 +72,13 @@ public class Camera_Controller : MonoBehaviour
         transform.position = target.position + camRotation * offSetTPS;
         transform.LookAt(target.position);
     }
+
+    public void TakeInput(float mouseInputX,float mouseInputY)
+    {
+        this.mouseInputX = mouseInputX;
+        this.mouseInputY = mouseInputY;
+    }
+         
 }
 
 

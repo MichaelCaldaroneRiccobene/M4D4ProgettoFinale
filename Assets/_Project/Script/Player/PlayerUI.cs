@@ -5,30 +5,29 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
+    public enum PanelType {menu,option,UiPlayer,WinScreen,LoseScreen }
+
     [Header("Setting UI Player")]
     [SerializeField] private Image imageHp;
     [SerializeField] private Image crossX;
     [SerializeField] private Image crown;
+
     [SerializeField] private TextMeshProUGUI textTime;
     [SerializeField] private TextMeshProUGUI textCoin;
 
     [Header("Setting Menu Player")]
-    [SerializeField] private GameObject pannelMenuPlayer;
-    [SerializeField] private GameObject pannelOptionPlayer;
+    [SerializeField] private GameObject[] pannels;
     [SerializeField] private GameObject pannelUIPlayer;
-    [SerializeField] private GameObject pannelWin;
-    [SerializeField] private GameObject pannelLose;
 
     [SerializeField] private string nameMenu = "Menu";
     [SerializeField] private string nameNextLevel = "Menu";
 
 
     private bool isMenuPlayerOpen;
-    private bool isPannelOptionPl;
 
     private void Start()
     {
-        UpdatePannel();
+        SetPannelsForEndGame(PanelType.UiPlayer);
         crossX.gameObject.SetActive(false);
     }
 
@@ -40,15 +39,28 @@ public class PlayerUI : MonoBehaviour
 
     public void IsOnAim(bool onAim) => crossX.gameObject.SetActive(onAim);
 
+    private void SetPannelsForGame(PanelType panelType)
+    {
+        for (int i = 0; i < pannels.Length; i++)
+        {
+            pannels[i].gameObject.SetActive(i == (int)panelType);
+        }
+        pannelUIPlayer.SetActive(true);
+    }
+
+    private void SetPannelsForEndGame(PanelType panelType)
+    {
+        for (int i = 0; i < pannels.Length; i++) pannels[i].gameObject.SetActive(i == (int)panelType);
+    }
+
     public void OpenMenu()
     {
         isMenuPlayerOpen = !isMenuPlayerOpen;
-        isPannelOptionPl = false;
-        UpdatePannel();
+        SetPannelsForGame(PanelType.menu);
+
         if(isMenuPlayerOpen)
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            CursorOnMenu();
             Time.timeScale = 0;
         }
         else ResumeGame();
@@ -57,24 +69,16 @@ public class PlayerUI : MonoBehaviour
     public void ResumeGame()
     {
         isMenuPlayerOpen = false;
-        isPannelOptionPl = false;
-        UpdatePannel();
+
+        SetPannelsForGame(PanelType.UiPlayer);
+
         Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        CursorNotOnMenu();
     }
 
-    public void GoOption()
-    {
-        isPannelOptionPl = !isPannelOptionPl;
-        UpdatePannel();
-    }
+    public void GoMainPannel() => SetPannelsForGame(PanelType.menu);
 
-    private void UpdatePannel()
-    {
-        pannelMenuPlayer.SetActive(isMenuPlayerOpen);
-        pannelOptionPlayer.SetActive(isPannelOptionPl);
-    }
+    public void GoOption() => SetPannelsForGame(PanelType.option);
 
     public void OnFinishGame()
     {
@@ -84,32 +88,30 @@ public class PlayerUI : MonoBehaviour
 
     public void OnWin()
     {
-        pannelMenuPlayer.SetActive(false);
-        pannelOptionPlayer.SetActive(false);
-        pannelUIPlayer.SetActive(false);
+        SetPannelsForEndGame(PanelType.WinScreen);
 
         Time.timeScale = 0;
-
-        pannelLose.SetActive(false);
-        pannelWin.SetActive(true);
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        CursorOnMenu();
     }
 
     public void OnLose()
     {
-        pannelMenuPlayer.SetActive(false);
-        pannelOptionPlayer.SetActive(false);
-        pannelUIPlayer.SetActive(false);
+        SetPannelsForEndGame(PanelType.LoseScreen);
 
         Time.timeScale = 0;
+        CursorOnMenu();
+    }
 
-        pannelLose.SetActive(true);
-        pannelWin.SetActive(false);
-
+    private void CursorOnMenu()
+    {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    private void CursorNotOnMenu()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void GoMenu() => SceneManager.LoadScene(nameMenu);

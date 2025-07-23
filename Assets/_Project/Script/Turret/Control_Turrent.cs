@@ -28,7 +28,7 @@ public class Control_Turrent : MonoBehaviour
             Turret turret = transform.GetChild(i).GetComponent<Turret>();
             if (turret != null)
             {
-                turret.Target = Target;
+                if(Target != null) turret.Target = Target;
                 turret.Control_Turrent = this;
             }
         }

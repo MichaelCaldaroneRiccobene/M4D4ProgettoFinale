@@ -6,8 +6,11 @@ public class Player_Controller : MonoBehaviour
     [Header("OnMenu")]
     public UnityEvent goOnMenu;
 
+    [Header("OnLooking")]
+    public UnityEvent<float, float> onDirectionLook;
+
     [Header("OnMoving")]
-    public UnityEvent<float,float> onDirection;
+    public UnityEvent<float,float> onDirectionMove;
     public UnityEvent <bool> isOnFocus;
     public UnityEvent<bool> isRunning;
 
@@ -20,6 +23,9 @@ public class Player_Controller : MonoBehaviour
 
     private float horizontal;
     private float vertical;
+
+    private float mouseInputX;
+    private float mouseInputY;
 
     private bool isFocusMode;
     private bool onDisableInput;
@@ -39,8 +45,13 @@ public class Player_Controller : MonoBehaviour
 
         if (onDisableInput) return;
 
+        //Move
         horizontal = Input.GetAxis("Horizontal"); vertical = Input.GetAxis("Vertical");
-        onDirection?.Invoke(horizontal, vertical);;
+        onDirectionMove?.Invoke(horizontal, vertical);;
+
+        //Look
+        mouseInputX = Input.GetAxis("Mouse X"); mouseInputY = Input.GetAxis("Mouse Y");
+        onDirectionLook?.Invoke(mouseInputX, mouseInputY);;
 
         // Jump And JumpAir
         if (Input.GetKeyDown(KeyCode.Space)) onJump?.Invoke();

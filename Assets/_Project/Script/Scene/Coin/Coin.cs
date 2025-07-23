@@ -5,6 +5,7 @@ public class Coin : MonoBehaviour
 {
     public UnityEvent AnimationTakeCoin;
     public Game_Manager Game_Manager { get; set; }
+
     private bool isCoinTake = false;
 
     private void OnTriggerEnter(Collider other)
