@@ -10,8 +10,9 @@ public class Turret_On_Player : Turret
     public override void Update()
     {
         if (Target == null) return;
+
         base.Update();
-        transform.LookAt(Target.transform.position + Vector3.up * lookDownForPlayer);
+        transform.LookAt(Target.transform.position);
     }
 
     public override void Shoot()

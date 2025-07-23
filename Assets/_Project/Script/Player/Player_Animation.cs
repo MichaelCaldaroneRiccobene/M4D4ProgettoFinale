@@ -18,6 +18,7 @@ public class Player_Animation : MonoBehaviour
     private float currentSpeed;
     private float direction;
     private float SpeedJumpAir;
+    private bool isOnGround;
 
     private void Start() => animator = GetComponent<Animator>();
 
@@ -30,7 +31,7 @@ public class Player_Animation : MonoBehaviour
     private void FixedUpdate()
     {
         animator.SetFloat(paramNameSpeed, currentSpeed, smoothLerpAnimation, Time.fixedDeltaTime);
-        animator.SetFloat(paramNameDirection, direction, smoothLerpAnimation, Time.fixedDeltaTime);
+        animator.SetFloat(paramNameDirection, direction);
 
         animator.SetFloat(paramNameJumpAir, SpeedJumpAir, smoothLerpAnimation, Time.fixedDeltaTime);
     }
@@ -41,13 +42,24 @@ public class Player_Animation : MonoBehaviour
         this.direction = direction; 
     }
 
-    public void OnAttack() => animator.SetTrigger(paramNameAttack);
+    public void OnAttack()
+    {
+        animator.SetTrigger(paramNameAttack);
+    }
 
-    public void OnJump() => animator.SetTrigger(paramNameJump);
+    public void OnJump()
+    {
+        if (!isOnGround) return;
+        animator.SetTrigger(paramNameJump);
+    }
 
     public void OnJumpAir() => SpeedJumpAir = maxSpeedJumpAir;
 
-    public void IsOnGround(bool isGround) => animator.SetBool(paramNameIsGround, isGround);
+    public void IsOnGround(bool isOnGround)
+    {
+        animator.SetBool(paramNameIsGround, isOnGround);
+        this.isOnGround = isOnGround;;
+    }
 
     public void Recover() => animator.SetTrigger(paramNameRecover);
 }

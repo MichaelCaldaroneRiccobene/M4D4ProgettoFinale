@@ -202,6 +202,7 @@ Transform:
   - {fileID: 8975857435493524449}
   - {fileID: 9118460873348645576}
   - {fileID: 8197667086728233722}
+  - {fileID: 8004525896509590195}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &4358109354992385769
@@ -399,7 +400,7 @@ MonoBehaviour:
   firePoint: {fileID: 8197667086728233722}
   parentBulletPlayer: {fileID: 0}
   fireRate: 0.5
-  initialPoolSizeBullet: 0
+  initialPoolSizeBullet: 20
   OnAttack:
     m_PersistentCalls:
       m_Calls:
@@ -475,7 +476,7 @@ MonoBehaviour:
   pannelWin: {fileID: 6103395103618558742}
   pannelLose: {fileID: 9203970661797707585}
   nameMenu: Menu
-  nameNextLevel: Menu
+  nameNextLevel: Level2
 --- !u!114 &5768349089456117652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2455,6 +2456,59 @@ Transform:
   - {fileID: 2159534967187264696}
   m_Father: {fileID: 2154924519378796414}
   m_LocalEulerAnglesHint: {x: -0.00002859415, y: -0.000043271924, z: 3.107661}
+--- !u!1 &2198389073620143267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8004525896509590195}
+  - component: {fileID: 3398636728194608330}
+  m_Layer: 7
+  m_Name: HeadBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8004525896509590195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2198389073620143267}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8497412766800189694}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3398636728194608330
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2198389073620143267}
+  m_Material: {fileID: 13400000, guid: 121dad964ad1d2c4f8b1a691585065cf, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.25, y: 0.25, z: 0.25}
+  m_Center: {x: 0, y: 0.15, z: 0.5}
 --- !u!1 &2488591162572551997
 GameObject:
   m_ObjectHideFlags: 0
@@ -2501,7 +2555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 2120
   raySphere: 0.2
   onGround:
     m_PersistentCalls:

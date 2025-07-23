@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 56a75339a19c2bb40acf257c53fd6e82, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 6840843319207131177}
   - component: {fileID: 5632195354471906276}
   - component: {fileID: -4263056146185701335}
+  - component: {fileID: 5310995288793932230}
   - component: {fileID: 8290987114373034130}
   - component: {fileID: 152690896059446379}
   m_Layer: 9
@@ -171,7 +172,21 @@ MonoBehaviour:
   firePoint: {fileID: 568283562726121834}
   fireRate: 1
   distanceToShoot: 80
-  hitForDeth: 3
+  onRangeTarget:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5310995288793932230}
+        m_TargetAssemblyTypeName: Turret_Animation_Color, Assembly-CSharp
+        m_MethodName: OnRangeTarget
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &-4263056146185701335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +204,25 @@ MonoBehaviour:
   minSpeedMoving: 0.5
   maxSpeedMoving: 3
   newPos: {x: 0, y: 4, z: 0}
+--- !u!114 &5310995288793932230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4638856982404910724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b50e1e5f6cc81b4ea28fdc5a8741d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitForDeth: 3
+  timeForFlickering: 0.15
+  timeDoFlickering: 2
+  corpo: {fileID: 850088998503915611}
+  cannone: {fileID: 3555961740342765159}
+  occhio: {fileID: 6036820018987246206}
+  pupulla: {fileID: 2651260327008862056}
 --- !u!135 &8290987114373034130
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -294,7 +328,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 07e60fc4529ccf14d8ee61f2e5bbd9f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -377,7 +411,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 06e099b6ff86cf44996f2a559628dba5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -460,7 +494,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: c5279640dd7dbf24eb73fb456f0f9deb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

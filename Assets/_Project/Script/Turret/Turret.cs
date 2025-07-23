@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Turret : MonoBehaviour,I_IDamage
+public class Turret : MonoBehaviour
 {
     [Header("Bullet Setting")]
     [SerializeField] protected int damage = 10;
@@ -13,23 +14,30 @@ public class Turret : MonoBehaviour,I_IDamage
     [SerializeField] protected float fireRate = 1;
     [SerializeField] protected float distanceToShoot = 10;
 
-    [Header("Logic Life")]
-    [SerializeField] protected int hitForDeth = 3;
+    public UnityEvent <bool> onRangeTarget;
 
     public Transform Target {  get; set; }
     public Control_Turrent Control_Turrent { get; set; }
 
     protected float lastTimeShoot;
     protected bool isShooting;
+    protected float distanceToTarget;
 
     public virtual void Update() => TryToShoot();
 
     public virtual void TryToShoot()
     {
-        float distance = Vector3.Distance(transform.position,Target.position);
-        if (distance >= distanceToShoot) return;
-
-        if (!isShooting && Time.time - lastTimeShoot >= fireRate) Shoot();
+        distanceToTarget = Vector3.Distance(transform.position,Target.position);
+        if (distanceToTarget >= distanceToShoot)
+        {
+            onRangeTarget?.Invoke(false);
+            return;
+        }
+        else
+        {
+            onRangeTarget?.Invoke(true);
+            if (!isShooting && Time.time - lastTimeShoot >= fireRate) Shoot();
+        }     
     }
 
     public virtual void Shoot()
@@ -43,11 +51,5 @@ public class Turret : MonoBehaviour,I_IDamage
 
         b.gameObject.SetActive(true);
         lastTimeShoot = Time.time;
-    }
-
-    public void Damage(int ammount)
-    {
-        hitForDeth--;
-        if (hitForDeth <= 0) Destroy(gameObject);
     }
 }

@@ -8,6 +8,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 850088998503915611, guid: b2781bdda0f1694428fb9c2313b12c9f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9345e0e3013393842ae9cbd8fddc74b6, type: 2}
     - target: {fileID: 4638856982404910724, guid: b2781bdda0f1694428fb9c2313b12c9f,
         type: 3}
       propertyPath: m_Name
@@ -88,6 +93,18 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 2272421891605439220}
   m_SourcePrefab: {fileID: 100100000, guid: b2781bdda0f1694428fb9c2313b12c9f, type: 3}
+--- !u!114 &2623466622253256620 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5310995288793932230, guid: b2781bdda0f1694428fb9c2313b12c9f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7916236251675111018}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3295677479221453038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b50e1e5f6cc81b4ea28fdc5a8741d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3295677479221453038 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4638856982404910724, guid: b2781bdda0f1694428fb9c2313b12c9f,
@@ -111,7 +128,21 @@ MonoBehaviour:
   firePoint: {fileID: 7655815963141590784}
   fireRate: 1
   distanceToShoot: 80
-  hitForDeth: 3
+  onRangeTarget:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2623466622253256620}
+        m_TargetAssemblyTypeName: Turret_Animation_Color, Assembly-CSharp
+        m_MethodName: OnRangeTarget
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   lookDownForPlayer: -8
 --- !u!4 &7655815963141590784 stripped
 Transform:

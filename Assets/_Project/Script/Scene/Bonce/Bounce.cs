@@ -25,7 +25,6 @@ public class Bounce : MonoBehaviour
         Rigidbody rb = collision.collider.attachedRigidbody;
         if (rb == null) return;
 
-        Vector3 dir = rb.position - transform.position;
-        rb.AddForce(dir *  forceImpulce,ForceMode.Impulse);
+        rb.AddForce(Vector3.up *  (forceImpulce * Time.deltaTime),ForceMode.Impulse);
     }
 }

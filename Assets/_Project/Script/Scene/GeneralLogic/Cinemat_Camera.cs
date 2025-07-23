@@ -9,23 +9,26 @@ public class Cinemat_Camera : MonoBehaviour
 {
     [Header("Setting")]
     [SerializeField] private float speed = 0.8f; 
-    [SerializeField] private Camera_Controller camController;
+    [SerializeField] private Transform camPlayer;
     [SerializeField] private float timeForGoToMainCamera;
     [SerializeField] private Image[] imageUiPlayer;
     [SerializeField] private TextMeshProUGUI[] textUiPlayer;
 
     public UnityEvent<bool> onDisableInput;
 
-    //[SerializeField] private Vector3[] points; Old
+    private AudioListener audioListener;
+
+    private void Awake()
+    {
+        // Dava problemi nella console e bisogna disabilitarlo fine.
+        audioListener = GetComponent<AudioListener>();
+        audioListener.enabled = false;
+    }
 
     private void Start()
     {
-        if (camController == null) gameObject.SetActive(false);
-        else
-        {
-            StartCoroutine(GoToMainCamera());
-            Invoke("OffMainCamera", 0.01f);
-        }
+        if (camPlayer == null) gameObject.SetActive(false);
+        else StartCoroutine(GoToMainCamera());
 
         if (imageUiPlayer != null)
         {
@@ -52,18 +55,18 @@ public class Cinemat_Camera : MonoBehaviour
         }
     }
 
-    private void OffMainCamera() => camController.gameObject.SetActive(false);
-
     private IEnumerator GoToMainCamera()
     {
+        yield return null;
         onDisableInput?.Invoke(true);
+        camPlayer.gameObject.SetActive(false);
         yield return new WaitForSeconds(timeForGoToMainCamera);
 
         Animator anim = GetComponent<Animator>();
         if (anim != null) anim.enabled = false;
 
         Vector3 startLocation = transform.position;
-        Vector3 endLocation = camController.transform.position;
+        Vector3 endLocation = camPlayer.position;
         Quaternion startRot = transform.rotation;
 
         float progress = 0;
@@ -73,13 +76,13 @@ public class Cinemat_Camera : MonoBehaviour
             progress += Time.deltaTime * speed;
             float smooth = Mathf.SmoothStep(0, 1, progress);
             Vector3 interpolate = Vector3.Lerp(startLocation, endLocation, smooth);
-            Quaternion interpolateRot = Quaternion.Lerp(startRot, camController.transform.rotation, progress);
+            Quaternion interpolateRot = Quaternion.Lerp(startRot, camPlayer.rotation, progress);
 
             transform.position = interpolate;
             transform.rotation = interpolateRot;
             yield return null;
         }
-        camController.gameObject.SetActive(true);
+        camPlayer.gameObject.SetActive(true);
         gameObject.SetActive(false);
         RestorImage();
         RestorText();
@@ -106,43 +109,4 @@ public class Cinemat_Camera : MonoBehaviour
             text.color = color;
         }
     }
-
-    // Vecchio Sistema di Cinematic
-
-    //private IEnumerator Camera()
-    //{
-    //    for (int i = 0; i < points.Length; i++)
-    //    {
-    //        Vector3 startLocation = transform.position;
-    //        Vector3 endLocation = points[i];
-
-    //        float progression = 0;
-    //        while (progression < 1)
-    //        {
-    //            progression += Time.deltaTime * speed;
-    //            Vector3 interpolate = Vector3.Lerp(startLocation, endLocation, progression);
-
-    //            transform.position = interpolate;
-    //            yield return null;
-    //        }
-    //    }
-
-    //    Vector3 startLocation = transform.position;
-    //    Vector3 endLocation = camController.transform.position;
-
-    //    float progress = 0;
-    //    while (progress < 1)
-    //    {
-    //        progress += Time.deltaTime * speed;
-    //        float smooth = Mathf.SmoothStep(0, 1, progress);
-    //        Vector3 interpolate = Vector3.Lerp(startLocation, endLocation, smooth);
-    //        Quaternion interpolateRot = Quaternion.Lerp(transform.rotation, camController.transform.rotation, smooth);
-
-    //        transform.position = interpolate;
-    //        transform.rotation = interpolateRot;
-    //        yield return null;
-    //    }
-    //    camController.gameObject.SetActive(true);
-    //    gameObject.SetActive(false);
-    //}
 }

@@ -11,6 +11,7 @@ public class Turret_Magic : Turret
     public override void Update()
     {
         if (Target == null) return;
+
         base.Update();
         transform.LookAt(Target.transform.position);
     }

@@ -53,10 +53,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 850088998503915611, guid: b2781bdda0f1694428fb9c2313b12c9f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2807032312327e347af044af8295f45e, type: 2}
     - target: {fileID: 4638856982404910724, guid: b2781bdda0f1694428fb9c2313b12c9f,
         type: 3}
       propertyPath: m_Name
       value: Turret Magic Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5310995288793932230, guid: b2781bdda0f1694428fb9c2313b12c9f,
+        type: 3}
+      propertyPath: cannone
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5632195354471906276, guid: b2781bdda0f1694428fb9c2313b12c9f,
         type: 3}
@@ -152,9 +162,35 @@ MonoBehaviour:
   firePoint: {fileID: 5113068750701379627}
   fireRate: 1
   distanceToShoot: 80
-  hitForDeth: 3
+  onRangeTarget:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 622556679432224903}
+        m_TargetAssemblyTypeName: Turret_Animation_Color, Assembly-CSharp
+        m_MethodName: OnRangeTarget
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   bulletToShoot: 3
   timeForNextBulletToShootInSequence: 0.2
+--- !u!114 &622556679432224903 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5310995288793932230, guid: b2781bdda0f1694428fb9c2313b12c9f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4690417733581349185}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105607863717261253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b50e1e5f6cc81b4ea28fdc5a8741d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5113068750701379627 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 568283562726121834, guid: b2781bdda0f1694428fb9c2313b12c9f,

@@ -10,7 +10,6 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] private float speedRun = 30;
     [SerializeField] private float maxRunSpeed = 30;
 
-    [SerializeField] private float downForce = 10;
     [SerializeField] private float maxSpeedForWalkAnimation = 0.5f;
 
     [Header("Setting Rotation Player")]
@@ -53,9 +52,7 @@ public class Player_Movement : MonoBehaviour
         if (direction.sqrMagnitude >= 0.01f)
         {
             direction.Normalize();
-            Movement(direction);
-
-            if (isOnGround) DownForce();
+            Movement();
         }
 
         if (isFocusMode)
@@ -71,19 +68,21 @@ public class Player_Movement : MonoBehaviour
         SettingForWalkAnimation();
     }
 
-    public void Movement(Vector3 direction)
+    public void Movement()
     {
         movementSpeed = isRunning ? speedRun : speedWalk;
         currentMaxMovementSpeed = isRunning ? maxRunSpeed : maxWalkSpeed;
 
-        Vector3 velocityRb = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-
-        if (velocityRb.magnitude > currentMaxMovementSpeed)
+        Vector3 horizontalVelocityRb = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        
+        if (horizontalVelocityRb.magnitude > currentMaxMovementSpeed)
         {
-            Vector3 clampVelocity = velocityRb.normalized * currentMaxMovementSpeed;
+            Vector3 clampVelocity = horizontalVelocityRb.normalized * currentMaxMovementSpeed;
             rb.velocity = new Vector3(clampVelocity.x, rb.velocity.y, clampVelocity.z);
+            return;
         }
-        else rb.AddForce(direction * movementSpeed, ForceMode.Force);
+
+        rb.AddForce(direction * movementSpeed, ForceMode.Force);
     }
 
     private void SettingForWalkAnimation()
@@ -110,8 +109,6 @@ public class Player_Movement : MonoBehaviour
     public void IsOnGround(bool isOnGround) => this.isOnGround = isOnGround;
 
     public void IsRunnig(bool isRunning) => this.isRunning = isRunning;
-
-    public void DownForce() => rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, downForce * Time.fixedDeltaTime);
 
     public void Jump() { if (isOnGround) rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); }
 
